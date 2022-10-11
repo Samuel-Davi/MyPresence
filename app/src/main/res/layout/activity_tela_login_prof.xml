@@ -11,7 +11,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="bottom"
+        android:gravity="top"
+        android:layout_weight="0.1"
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/imageView6"
@@ -22,118 +23,160 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/headerwhite" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Entre na sua conta:"
-                android:textColor="@color/azulcobalto"
-                android:textSize="22dp"
-                android:fontFamily="@font/alata" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:layout_height="320dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_height="250dp">
-                <EditText
-                    android:id="@+id/textEmail"
-                    android:layout_width="270dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittextstyle"
-                    android:ems="10"
-                    android:textAlignment="center"
-                    android:hint="Email"
-                    android:drawableLeft="@drawable/imguser"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/azulcobalto"
-                    android:textColorHint="@color/azulcobalto" />
-
-                <EditText
-                    android:id="@+id/textPassword"
-                    android:layout_width="270dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittextstyle"
-                    android:ems="10"
-                    android:drawableLeft="@drawable/imglock"
-                    android:textAlignment="center"
-                    android:hint="Senha"
-                    android:layout_marginTop="50dp"
-                    android:inputType="textPassword"
-                    android:textColor="@color/azulcobalto"
-                    android:textColorHint="@color/azulcobalto" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/txtEsqSenha"
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/montserrat_alternates_bold"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:background="@drawable/editlink"
-                    android:text="Esqueceu sua senha?" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
         android:layout_weight="1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/headerwhite" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Entre na sua conta:"
+                            android:textColor="@color/azulcobalto"
+                            android:textSize="22dp"
+                            android:fontFamily="@font/alata" />
+                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/textEmail"
+                            android:layout_width="270dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittextstyle"
+                            android:ems="10"
+                            android:textAlignment="center"
+                            android:hint="Email"
+                            android:drawableLeft="@drawable/imguser"
+                            android:inputType="textEmailAddress"
+                            android:textColor="@color/azulcobalto"
+                            android:textColorHint="@color/azulcobalto" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/textPassword"
+                            android:layout_width="270dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittextstyle"
+                            android:ems="10"
+                            android:drawableLeft="@drawable/imglock"
+                            android:textAlignment="center"
+                            android:hint="Senha"
+                            android:inputType="textPassword"
+                            android:textColor="@color/azulcobalto"
+                            android:textColorHint="@color/azulcobalto" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20dp"
+                            android:textColor="@color/azulescuro"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:text="Instituição"/>
+                        <Spinner
+                            android:id="@+id/spinnerInst"
+                            android:layout_width="300dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtEsqSenha"
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/montserrat_alternates_bold"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:background="@drawable/editlink"
+                        android:text="Esqueceu sua senha?" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:gravity="center"
             android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:gravity="center">
-                <Button
-                    android:id="@+id/botaoLogin"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/buttonstyle"
-                    android:backgroundTint="@color/azulpadrao"
-                    android:fontFamily="@font/alata"
-                    android:layout_marginTop="30dp"
-                    android:text="Entrar"/>
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+                    <Button
+                        android:id="@+id/botaoLogin"
+                        android:layout_width="200dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/buttonstyle"
+                        android:backgroundTint="@color/azulpadrao"
+                        android:fontFamily="@font/alata"
+                        android:textColor="@color/cinza_claro"
+                        android:text="Entrar"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

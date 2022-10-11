@@ -1,59 +1,71 @@
 package com.example.finalproject.view
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.databinding.ActivityTelaAdmProfBinding
-import com.example.finalproject.model.AdmModel
-import com.example.finalproject.model.ProfModel
-import com.example.finalproject.network.ApiClient
-import com.example.finalproject.network.InterfaceApi
-import com.example.finalproject.recycler.ProfAdapter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.finalproject.fragment.AdmAccountFragment
+import com.example.finalproject.fragment.AdmHomeFragment
+import com.example.finalproject.model.Prof
+import com.example.finalproject.R
+import com.google.firebase.firestore.*
 
 
-class TelaAdmProf : AppCompatActivity() {
+class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var profs: ArrayList<ProfModel>
+    private lateinit var imgHome: ImageView
+    private lateinit var imgAccount: ImageView
+
+    private lateinit var homeFragment: AdmHomeFragment
+    private lateinit var accountFragment: AdmAccountFragment
+
+    private lateinit var db:FirebaseFirestore
+
+    private lateinit var disciplinas:ArrayList<String>
+
+
+    private lateinit var profs:ArrayList<Prof>
+    private lateinit var recyclerView: RecyclerView
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityTelaAdmProfBinding.inflate(layoutInflater)
         var valorClick:Boolean = false;
         setContentView(binding.root)
 
-        //getProfs(profs)
+        db = FirebaseFirestore.getInstance()
+
+
+        imgHome = findViewById(R.id.imgHome)
+        imgHome.setOnClickListener(this)
+
+        imgAccount = findViewById(R.id.imgAccount)
+        imgAccount.setOnClickListener(this)
+
+        homeFragment = AdmHomeFragment()
+        accountFragment = AdmAccountFragment()
+
+
+        val fragmentTransaction =
+            supportFragmentManager.beginTransaction().add(R.id.fragments, homeFragment)
+        fragmentTransaction.commit()
+
 
         val data = intent.extras
         val nome = data?.getString("nome")
         val senha = data?.getString("senha")
-        val instituicao = data?.getString("instituicao")
+        val inst = data?.getString("inst")
         val email = data?.getString("email")
 
-        binding.txtOla.text = "Olá $nome";
 
-
-        binding.imgAccount.setOnClickListener {
-            val intent = Intent(this, TelaOpcAdm::class.java)
-            intent.putExtra("senha", senha)
-            intent.putExtra("email", email)
-            intent.putExtra("nome", nome)
-            startActivity(intent)
-        }
-
-        binding.txtTurma.setOnClickListener {
-            val intent = Intent(this, TelaAdmTurmas::class.java)
-            intent.putExtra("nome", nome)
-            startActivity(intent)
-        }
         binding.imgAdd.setOnClickListener {
             if(!valorClick){
                 binding.btCadProf.isVisible = true
@@ -66,29 +78,58 @@ class TelaAdmProf : AppCompatActivity() {
             }
         }
         binding.btCadProf.setOnClickListener {
-            startActivity(Intent(this, TelaCadProf::class.java))
+            getDisciplinas(inst.toString(), email.toString(), nome.toString())
         }
         binding.btCadTurma.setOnClickListener {
-            startActivity(Intent(this, TelaCadTurma::class.java))
+            val intent = Intent(this, TelaCadTurma::class.java)
+            intent.putExtra("inst", inst)
+            intent.putExtra("email", email)
+            intent.putExtra("nome", nome)
+            startActivity(intent)
         }
     }
 
-    private fun getProfs(users: ArrayList<ProfModel>){
-        val prof: ProfModel? = null
-        val endpoint = ApiClient.getRetrofit().create(InterfaceApi::class.java)
-        val callback = prof?.let { endpoint.getProfs(it.email, prof.nome, prof.senha, prof.disciplina) }
-        callback?.enqueue(object : Callback<List<ProfModel>>{
-            override fun onResponse(
-                call: Call<List<ProfModel>>,
-                response: Response<List<ProfModel>>
-            ) {
-                Log.d("data", response.body()!!.toString())
+    private fun getDisciplinas(inst: String, email:String, nome:String){
+        db = FirebaseFirestore.getInstance()
+        val list = db.collection("Adm").document(inst).collection("Disciplinas")
+        list.get().addOnSuccessListener {documents ->
+            disciplinas = ArrayList()
+            for(document in documents){
+                var nomeDisc = document.get("nome").toString()
+                disciplinas.add(nomeDisc)
+                Log.d("TAG", disciplinas.toString())
             }
+            val intent = Intent(this, TelaCadProf::class.java)
+            intent.putExtra("inst", inst)
+            intent.putExtra("email", email)
+            intent.putExtra("nome", nome)
+            intent.putExtra("disciplinas", disciplinas)
+            startActivity(intent)
+        }.addOnFailureListener {
+            Log.w("TAG", "Error getting documents: ", it)
+        }
+    }
 
-            override fun onFailure(call: Call<List<ProfModel>>, t: Throwable) {
-                Log.d("erro", t.message.toString())
+    private fun replaceFragment(fragment: Fragment){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragments, fragment)
+        fragmentTransaction.commit()
+    }
+
+    override fun onClick(v: View) {
+        var imgHome:ImageView = findViewById(R.id.imgHome)
+        var imgAccount:ImageView = findViewById(R.id.imgAccount)
+        when(v.id){
+            R.id.imgAccount ->{
+                replaceFragment(accountFragment)
+                imgHome.setImageDrawable(getDrawable(R.drawable.imghomedes))
+                imgAccount.setImageDrawable(getDrawable(R.drawable.imguserbox))
             }
-
-        })
+            R.id.imgHome ->{
+                replaceFragment(homeFragment)
+                imgHome.setImageDrawable(getDrawable(R.drawable.imghome))
+                imgAccount.setImageDrawable(getDrawable(R.drawable.imgaccountdes))
+            }
+        }
     }
 }

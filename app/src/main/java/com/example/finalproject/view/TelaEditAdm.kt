@@ -5,54 +5,61 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.example.finalproject.R
 import com.example.finalproject.databinding.ActivityTelaEditAdmBinding
-import com.example.finalproject.model.AdmModel
 import com.example.finalproject.model.UserModel
 import com.example.finalproject.network.ApiClient
 import com.example.finalproject.network.InterfaceApi
-import com.google.firebase.firestore.auth.User
+import com.google.firebase.firestore.FirebaseFirestore
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class TelaEditAdm : AppCompatActivity() {
+    private lateinit var db:FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityTelaEditAdmBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        db = FirebaseFirestore.getInstance()
+
         val data = intent.extras
         val nome = data?.getString("nome")
         val email = data?.getString("email")
-        val senha = data?.getString("senha")
+        val inst = data?.getString("inst")
+
+        binding.textemail.hint = email
+        binding.textNome.hint = nome
+
+        binding.btBack.setOnClickListener {
+            val intent = Intent(this, TelaAdmProf::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("nome", nome)
+            intent.putExtra("inst", inst)
+            startActivity(intent);
+        }
 
         binding.btAlterar.setOnClickListener {
-            updateAdm(binding.textemail.text.toString(), binding.textSenha.text.toString())
+            updateAdm(binding.textemail.text.toString(), binding.textNome.text.toString(), inst.toString())
+            binding.textemail.text.clear()
+            binding.textNome.text.clear()
         }
     }
-    private fun updateAdm(email:String, senha:String){
-        val endpoint = ApiClient.getRetrofit().create(InterfaceApi::class.java)
-        val callback = endpoint.updateUser(email, senha)
-        callback.enqueue(object : Callback<UserModel> {
-            override fun onResponse(
-                call: Call<UserModel>,
-                response: Response<UserModel>
-            ) { try {
-                val intent = Intent(this@TelaEditAdm, TelaOpcAdm::class.java)
-                startActivity(intent)
-            }catch (e:Exception){
-                Log.d("e", e.message.toString())
-                Toast.makeText(this@TelaEditAdm, "Email incorreto", Toast.LENGTH_LONG).show()
-            }}
+    private fun updateAdm(email:String, nome:String, inst:String){
 
-            override fun onFailure(
-                call: Call<UserModel>,
-                t: Throwable
-            ) {
-                Toast.makeText(this@TelaEditAdm, "falha na conexão", Toast.LENGTH_LONG).show();
-                Log.d("erro", t.message.toString())
+        db.collection("Adm").document(inst)
+            .update(mapOf(
+                "email" to email,
+                "nome" to nome
+            )).addOnSuccessListener {
+                Toast.makeText(this, "Atualizado com sucesso!", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, TelaAdmProf::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("nome", nome)
+                intent.putExtra("inst", inst)
+                startActivity(intent)
+            }.addOnFailureListener{
+                Toast.makeText(this, "Erro ao atualizar os dados", Toast.LENGTH_LONG).show()
             }
-        })
     }
 }

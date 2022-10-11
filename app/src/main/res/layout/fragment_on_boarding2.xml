@@ -7,20 +7,19 @@
     android:background="@color/azulescuro"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".view.TelaOnBoarding1">
+    tools:context=".fragment.FragmentOnBoarding2">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:gravity="center"
-        android:layout_weight="1"
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="252dp"
+            android:layout_width="wrap_content"
             android:scaleType="fitXY"
-            android:layout_height="111dp"
+            android:layout_height="wrap_content"
             app:srcCompat="@drawable/headerblack" />
     </LinearLayout>
 
@@ -51,6 +50,7 @@
             android:textSize="40dp"
             android:fontFamily="@font/alata"
             android:textColor="@color/white"
+            android:textAlignment="center"
             android:text="Lista de presença automática" />
     </LinearLayout>
 
@@ -64,7 +64,7 @@
             android:layout_width="340dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center"
+            android:gravity="top"
             android:layout_height="wrap_content">
 
             <TextView
@@ -74,48 +74,8 @@
                 android:fontFamily="@font/montserrat_alternates"
                 android:text="@string/txtonboarding2"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/btVoltar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/alata"
-                    android:text="Voltar" />
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/bolinhaonboarding1" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/btProx"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/alata"
-                    android:text="Próximo" />
-            </LinearLayout>
+                android:textAlignment="center"
+                android:textSize="14dp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

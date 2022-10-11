@@ -4,18 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.finalproject.R
-import com.example.finalproject.databinding.ActivityTelaOnBoarding3Binding
+import com.example.finalproject.databinding.ActivityTelaTchauBinding
 
-class TelaOnBoarding3 : AppCompatActivity() {
+class TelaTchau : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityTelaOnBoarding3Binding.inflate(layoutInflater)
+        val binding = ActivityTelaTchauBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btProx.setOnClickListener {
+
+        binding.btInit.setOnClickListener {
             startActivity(Intent(this, TelaEscolha::class.java))
-        }
-        binding.btVoltar.setOnClickListener {
-            startActivity(Intent(this, TelaOnBoarding2::class.java))
         }
     }
 }

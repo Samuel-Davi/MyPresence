@@ -8,14 +8,19 @@
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/buttonstyle.xml" value="0.1865" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/editlink.xml" value="0.1695" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/edittextstyle.xml" value="0.25" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.17" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2155" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/img_accountblue.xml" value="0.231" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/img_btnext.xml" value="0.1695" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/img_edit.xml" value="0.231" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/imgaccountdes.xml" value="0.177" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/imgadd.xml" value="0.1695" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/imgback.xml" value="0.143" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/imghome.xml" value="0.1695" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/imghomedes.xml" value="0.177" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/imglock.xml" value="0.1695" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/imguser.xml" value="0.1695" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/imguserbox.xml" value="0.177" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/linear_style.xml" value="0.1695" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/logo_background.xml" value="0.1865" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/textlink.xml" value="0.25" />
@@ -23,30 +28,48 @@
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/font/.xml" value="0.2546875" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/font/spartan_extrabold.xml" value="0.23876953125" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_main2.xml" value="0.11181640625" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_adm_prof.xml" value="0.2" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_adm_turmas.xml" value="0.18" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_cad.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_cad_adm.xml" value="0.22" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_cad_aluno.xml" value="0.15" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_cad_prof.xml" value="0.2" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_cad_prof.xml" value="0.22" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_cad_turma.xml" value="0.2" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_del_adm.xml" value="0.12083333333333333" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_edit_adm.xml" value="0.22" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_edit_prof.xml" value="0.197265625" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_escolha.xml" value="0.22" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_login.xml" value="0.21" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_login_adm.xml" value="0.22" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_login_adm.xml" value="0.2981770833333333" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_login_aluno.xml" value="0.2" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_login_prof.xml" value="0.12083333333333333" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_login_prof.xml" value="0.2" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_main_aluno.xml" value="0.18" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_main_professor.xml" value="0.2" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_on_boarding.xml" value="0.21" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_on_boarding.xml" value="0.22" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_on_boarding1.xml" value="0.2" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_on_boarding2.xml" value="0.2" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_on_boarding3.xml" value="0.2" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_opc_adm.xml" value="0.18" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_opc_aluno.xml" value="0.18" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_opc_prof.xml" value="0.22" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_tela_tchau.xml" value="0.22" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_teste_recycler.xml" value="0.22" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/card_layout.xml" value="0.25" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_adm_account.xml" value="0.21" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_adm_home.xml" value="0.21" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_on_boarding1.xml" value="0.18" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_on_boarding2.xml" value="0.18" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_on_boarding3.xml" value="0.22" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_prof_account.xml" value="0.14326923076923076" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_prof_home.xml" value="0.14326923076923076" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_profs.xml" value="0.17" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_turmas.xml" value="0.14326923076923076" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1865" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1865" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/mipmap-anydpi-v26/logo.xml" value="0.1865" />
+        <entry key="..\:/Users/samue/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_list_item_2.xml" value="0.14326923076923076" />
+        <entry key="..\:/Users/samue/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.22" />
       </map>
     </option>
   </component>

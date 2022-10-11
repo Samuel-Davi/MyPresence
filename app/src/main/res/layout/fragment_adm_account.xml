@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.TelaOpcAdm"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:background="@color/cinza_claro">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/cinza_claro"
+    tools:context=".fragment.AdmAccountFragment">
 
     <ImageView
         android:id="@+id/imageView23"
@@ -44,13 +42,14 @@
 
     <LinearLayout
         android:id="@+id/linearEdit"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="80dp"
+        android:background="@drawable/editlink"
         android:layout_marginTop="36dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgEdit">
 
@@ -121,13 +120,14 @@
 
     <LinearLayout
         android:id="@+id/linearDel"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="300dp"
+        android:layout_height="79dp"
         android:layout_marginTop="36dp"
+        android:background="@drawable/editlink"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearEdit">
 
@@ -143,14 +143,14 @@
 
     <LinearLayout
         android:id="@+id/linearSair"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/editlink"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/imageView18"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearDel"
         app:layout_constraintVertical_bias="0.06">
@@ -163,51 +163,6 @@
             android:text="Sair"
             android:textColor="#ff5757"
             android:textSize="28dp" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/fundoadmbottom" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp">
-
-        <ImageView
-            android:id="@+id/imgAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/imgadd"
-            tools:layout_editor_absoluteX="243dp"
-            tools:layout_editor_absoluteY="523dp" />
-
-        <ImageView
-            android:id="@+id/imgHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/imghome"
-            tools:layout_editor_absoluteX="158dp"
-            tools:layout_editor_absoluteY="602dp" />
-
-        <ImageView
-            android:id="@+id/imgAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/imguserbox"
-            tools:layout_editor_absoluteX="82dp"
-            tools:layout_editor_absoluteY="640dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@
             android:id="@+id/imageView6"
             android:layout_width="match_parent"
             android:scaleType="fitXY"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
             app:srcCompat="@drawable/triangulosazuis" />
     </LinearLayout>
 
@@ -132,7 +132,7 @@
                     android:background="@drawable/buttonstyle"
                     android:backgroundTint="@color/azulpadrao"
                     android:fontFamily="@font/alata"
-                    android:layout_marginTop="30dp"
+                    android:textColor="@color/white"
                     android:text="Entrar"/>
             </LinearLayout>
             <LinearLayout

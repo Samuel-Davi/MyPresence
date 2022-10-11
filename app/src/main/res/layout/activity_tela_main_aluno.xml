@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cinza_claro"
-    tools:context=".view.TelaAdmProf">
+    tools:context=".view.TelaMainAluno">
 
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="270dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat_alternates_bold"
-        android:text="Olá, Admin"
+        android:text="Olá, Samuel"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.757"
@@ -61,66 +61,18 @@
         app:srcCompat="@drawable/usuarioicon" />
 
     <TextView
-        android:id="@+id/txtProf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="68dp"
-        android:text="Professores"
-        android:textColor="@color/azulescuro"
-        android:textSize="28dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
-
-    <TextView
         android:id="@+id/txtTurma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="52dp"
-        android:text="Turmas"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/montserrat_alternates_bold"
+        android:text="Disciplinas"
         android:textColor="@color/azulescuro"
         android:textSize="28dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView14" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/edittextstyle"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Pesquisar"
-        android:textColorHint="@color/azulescuro"
-        android:drawableRight="@drawable/imgsearch"
-        android:textColor="@color/azulescuro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtProf" />
-
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-        app:srcCompat="@drawable/imgaulatelaadm2" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="218dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/txtAdmTurma"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -130,30 +82,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="1.0">
-
-        <Button
-            android:id="@+id/btCadProf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/btcad"
-            android:fontFamily="@font/montserrat_alternates_bold"
-            android:text="Cadastrar professores"
-            android:textSize="10dp"
-            android:visibility="invisible" />
-
-        <Button
-            android:id="@+id/btCadTurma"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/btcad"
-            android:fontFamily="@font/montserrat_alternates_bold"
-            android:text="Cadastrar turmas"
-            android:textSize="10dp"
-            android:visibility="invisible" />
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageView
         android:id="@+id/imageView18"
@@ -205,5 +134,20 @@
             app:layout_constraintTop_toTopOf="@+id/imageView18"
             app:srcCompat="@drawable/imguserbox" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtDisciplina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alata"
+        android:text="Turma:"
+        android:textColor="@color/cinza_claro"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.207"
+        app:layout_constraintStart_toEndOf="@+id/imageView13"
+        app:layout_constraintTop_toBottomOf="@+id/txtOla"
+        app:layout_constraintVertical_bias="0.299" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

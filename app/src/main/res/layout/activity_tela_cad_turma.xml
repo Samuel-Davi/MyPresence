@@ -41,32 +41,99 @@
         android:text="Criar Turma"
         android:textSize="36dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="70dp"
         android:fontFamily="@font/montserrat_alternates_bold"
         android:textColor="@color/azulescuro"/>
 
-    <TextView
-        android:id="@+id/textView13"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nome da turma:"
-        android:textSize="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:textColor="@color/black"/>
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome da turma"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"/>
 
-    <EditText
-        android:id="@+id/editTextTextPersonName4"
-        android:layout_width="220dp"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        android:hint="Ex: I3A"
-        android:layout_marginTop="30dp"
-        android:textColorHint="@color/black"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:background="@drawable/edittextstyle"/>
+        <EditText
+            android:id="@+id/edtNomeTurma"
+            android:layout_width="220dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:hint="Ex: I3A"
+            android:textColorHint="@color/cinza"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:background="@drawable/edittextstyle"/>
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Curso"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"/>
+
+        <Spinner
+            android:id="@+id/spinnerCursoTurma"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Série"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"/>
+
+        <Spinner
+            android:id="@+id/spinnerSerieTurma"
+            android:layout_width="220dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"/>
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Turma"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"/>
+
+        <Spinner
+            android:id="@+id/spinnerTurma"
+            android:layout_width="220dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:hint="Ex: I3A"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/black"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView14"
@@ -81,14 +148,14 @@
 
     <Button
         android:id="@+id/btInserir"
-        android:layout_width="220dp"
+        android:layout_width="180dp"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:text="Inserir Lista"
+        android:textColor="@color/cinza_claro"
         android:layout_marginTop="30dp"
         android:background="@drawable/buttonstyle"
         android:backgroundTint="@color/azulpadrao"
-        android:textAlignment="center"
         android:drawableLeft="@drawable/imgadd2"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -105,10 +172,10 @@
             android:textSize="26dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.664"
+            app:layout_constraintHorizontal_bias="0.78"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.85" />
+            app:layout_constraintVertical_bias="0.645" />
 
         <ImageButton
             android:id="@+id/imageButton2"
@@ -117,10 +184,10 @@
             android:background="@color/cinza_claro"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintHorizontal_bias="0.659"
             app:layout_constraintStart_toEndOf="@+id/textView16"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.85"
+            app:layout_constraintVertical_bias="0.645"
             app:srcCompat="@drawable/img_btnext" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

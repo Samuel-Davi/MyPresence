@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">My Presence</string>
     <string name="sublinhar"><u>underline</u></string>
+    <string name="txttchau">Sua conta foi excluída! Esperamos que volte logo :)</string>
     <string name="txtDel">Tem certeza de que deseja excluir sua conta? Essa ação não poderá ser desfeita.</string>
     <string name="txtAdmProf">Parece que ainda não há professores por aqui!</string>
     <string name="txtAdmTurma">Parece que ainda não há turmas por aqui!</string>
@@ -9,4 +10,6 @@
     <string name="txtonboarding1">Basta apontar a câmera para o seu rosto por alguns segundos e a sua presença será confirmada.</string>
     <string name="txtonboarding2">Agora ficou muito mais fácil de guardar a presença dos alunos! Lista gerada automaticamente :)</string>
     <string name="txtonboarding3">Visualize sua lista de turmas ou de disciplinas e fique por dentro das faltas ou presenças registradas em cada uma.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

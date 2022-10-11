@@ -3,6 +3,7 @@ package com.example.finalproject.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.finalproject.R
 import com.example.finalproject.model.BotaoConfirmado
@@ -13,63 +14,66 @@ class TelaEscolha : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityTelaEscolhaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var btConfirmado = BotaoConfirmado(false, false, false, 0)
+        var btConfirm = BotaoConfirmado(false, false, false, 0)
 
         binding.imgAdm.setOnClickListener {
-            if(!btConfirmado.valorBtAdm){
+            Log.d("TAG", btConfirm.valorConfirm.toString())
+            if(!btConfirm.valorBtAdm){
                 binding.imgAdm.setImageDrawable(getDrawable(R.drawable.admon))
-                btConfirmado.valorBtAdm = true
-                btConfirmado.valorConfirm = 3;
-                binding.imgALuno.isClickable = false
-                binding.imgProf.isClickable = false
+                btConfirm.valorBtAdm = true
+                btConfirm.valorBtProf = false;
+                btConfirm.valorBtAluno = false;
+                btConfirm.valorConfirm = 3;
+                binding.imgALuno.setImageDrawable(getDrawable(R.drawable.alunooff))
+                binding.imgProf.setImageDrawable(getDrawable(R.drawable.profoff))
             }else{
                 binding.imgAdm.setImageDrawable(getDrawable(R.drawable.admoff))
-                btConfirmado.valorBtAdm = false
-                btConfirmado.valorConfirm = 0;
-                binding.imgALuno.isClickable = true
-                binding.imgProf.isClickable = true
+                btConfirm.valorBtAdm = false
+                btConfirm.valorConfirm = 0;
             }
         }
         binding.imgProf.setOnClickListener {
-            if(!btConfirmado.valorBtProf){
+            Log.d("TAG", btConfirm.valorConfirm.toString())
+            if(!btConfirm.valorBtProf){
                 binding.imgProf.setImageDrawable(getDrawable(R.drawable.profon))
-                btConfirmado.valorBtProf = true
-                btConfirmado.valorConfirm = 2;
-                binding.imgALuno.isClickable = false
-                binding.imgAdm.isClickable = false
+                btConfirm.valorBtProf = true
+                btConfirm.valorBtAdm = false
+                btConfirm.valorBtAluno = false
+                btConfirm.valorConfirm = 2;
+                binding.imgALuno.setImageDrawable(getDrawable(R.drawable.alunooff))
+                binding.imgAdm.setImageDrawable(getDrawable(R.drawable.admoff))
             }else{
                 binding.imgProf.setImageDrawable(getDrawable(R.drawable.profoff))
-                btConfirmado.valorBtProf = false
-                btConfirmado.valorConfirm = 0;
-                binding.imgALuno.isClickable = true
-                binding.imgAdm.isClickable = true
+                btConfirm.valorBtProf = false
+                btConfirm.valorConfirm = 0;
             }
         }
         binding.imgALuno.setOnClickListener {
-            if(!btConfirmado.valorBtAluno){
+            Log.d("TAG", btConfirm.valorConfirm.toString())
+            if(!btConfirm.valorBtAluno){
                 binding.imgALuno.setImageDrawable(getDrawable(R.drawable.alunoon))
-                btConfirmado.valorBtAluno = true
-                btConfirmado.valorConfirm = 1;
-                binding.imgAdm.isClickable = false
-                binding.imgProf.isClickable = false
+                btConfirm.valorBtAluno = true
+                btConfirm.valorBtAdm = false
+                btConfirm.valorBtProf = false
+                btConfirm.valorConfirm = 1;
+                binding.imgAdm.setImageDrawable(getDrawable(R.drawable.admoff))
+                binding.imgProf.setImageDrawable(getDrawable(R.drawable.profoff))
             }else{
                 binding.imgALuno.setImageDrawable(getDrawable(R.drawable.alunooff))
-                btConfirmado.valorBtAluno = false
-                btConfirmado.valorConfirm = 0;
-                binding.imgAdm.isClickable = true
-                binding.imgProf.isClickable = true
+                btConfirm.valorBtAluno = false
+                btConfirm.valorConfirm = 0;
             }
         }
 
         binding.btProx.setOnClickListener {
-            if(btConfirmado.valorConfirm == 1){
+            if(btConfirm.valorConfirm == 1){
                 startActivity(Intent(this, TelaLoginAluno::class.java))
-            }else if(btConfirmado.valorConfirm == 2) {
+            }else if(btConfirm.valorConfirm == 2) {
                 startActivity(Intent(this, TelaLoginProf::class.java))
-            }else if(btConfirmado.valorConfirm == 3){
+            }else if(btConfirm.valorConfirm == 3){
                 startActivity(Intent(this, TelaLoginAdm::class.java))
             }else{
-                Toast.makeText(this, "Selecione uma opção", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor, selecione uma das opções para continuar", Toast.LENGTH_SHORT).show()
             }
         }
     }

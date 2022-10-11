@@ -42,82 +42,136 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/headerwhite" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text="Cadastrar Professor"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        <EditText-->
+        <!--            android:id="@+id/edtDisc"-->
+        <!--            android:layout_width="300dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:ems="10"-->
+        <!--            android:hint="disciplina"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:layout_marginTop="30dp"-->
+        <!--            android:textColorHint="@color/black"-->
+        <!--            android:textAlignment="center"-->
+        <!--            android:drawableLeft="@drawable/imgbook"-->
+        <!--            android:background="@drawable/edittextstyle"-->
+        <!--            android:inputType="textPersonName" />-->
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp">
+
+            <EditText
+                android:id="@+id/edtNome"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edittextstyle"
+                android:drawableLeft="@drawable/imguser"
+                android:ems="10"
+                android:hint="nome"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+            <EditText
+                android:id="@+id/edtSobrenome"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edittextstyle"
+                android:drawableLeft="@drawable/imguser"
+                android:ems="10"
+                android:hint="sobrenome"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edittextstyle"
+                android:drawableLeft="@drawable/imguser"
+                android:ems="10"
+                android:hint="email"
+                android:inputType="textEmailAddress"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+            <EditText
+                android:id="@+id/edtSenha"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edittextstyle"
+                android:drawableLeft="@drawable/imglock"
+                android:ems="10"
+                android:hint="senha"
+                android:inputType="textPassword"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textoSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disciplina"
+            android:textSize="20dp"
+            android:textColor="@color/azulescuro"
             android:fontFamily="@font/montserrat_alternates"
-            android:text="Cadastrar Professor" />
+            app:layout_constraintBottom_toTopOf="@+id/spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+            app:layout_constraintVertical_bias="0.736" />
 
-        <EditText
-            android:id="@+id/edtNome"
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="nome"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/edittextstyle"
-            android:drawableLeft="@drawable/imguser"
-            android:textAlignment="center"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
-            android:inputType="textPersonName" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+            app:layout_constraintVertical_bias="0.764" />
 
-        <EditText
-            android:id="@+id/edtEmail"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_marginTop="30dp"
-            android:hint="email"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:drawableLeft="@drawable/imguser"
-            android:background="@drawable/edittextstyle"
-            android:inputType="textEmailAddress" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <EditText
-            android:id="@+id/edtSenha"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="senha"
-            android:textColor="@color/black"
-            android:layout_marginTop="30dp"
-            android:textColorHint="@color/black"
-            android:drawableLeft="@drawable/imglock"
-            android:textAlignment="center"
-            android:background="@drawable/edittextstyle"
-            android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/edtDisc"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="disciplina"
-            android:textColor="@color/black"
-            android:layout_marginTop="30dp"
-            android:textColorHint="@color/black"
-            android:textAlignment="center"
-            android:drawableLeft="@drawable/imgbook"
-            android:background="@drawable/edittextstyle"
-            android:inputType="textPersonName" />
-
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="0.4"
+        android:layout_weight="1"
         android:gravity="center"
         android:layout_height="wrap_content">
         <Button
@@ -126,8 +180,10 @@
             android:background="@drawable/buttonstyle"
             android:backgroundTint="@color/azulpadrao"
             android:layout_height="wrap_content"
+            android:textColor="@color/cinza_claro"
             android:text="Cadastrar"
             />
+
     </LinearLayout>
 
 </LinearLayout>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/cinza_claro"
-    tools:context=".fragment.AdmAccountFragment">
+    tools:context=".view.TelaEditFotoAdm">
 
     <ImageView
         android:id="@+id/imageView23"
@@ -16,29 +16,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/headerwhite" />
 
-    <ImageView
-        android:id="@+id/imgEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgEditFoto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:src="@drawable/img_accountblue"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.252"
-        app:srcCompat="@drawable/img_accountblue" />
-
-    <ImageView
-        android:id="@+id/btEditFotoAdm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imgEdit"
-        app:layout_constraintHorizontal_bias="0.827"
-        app:layout_constraintStart_toStartOf="@+id/imgEdit"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.308"
-        app:srcCompat="@drawable/img_edit" />
+        app:layout_constraintVertical_bias="0.252" />
 
     <LinearLayout
         android:id="@+id/linearEdit"
@@ -51,14 +40,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgEdit">
+        app:layout_constraintTop_toBottomOf="@+id/imgEditFoto">
 
         <TextView
-            android:id="@+id/txtEdit"
+            android:id="@+id/txtEditFoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_alternates"
-            android:text="Editar Perfil"
+            android:text="Editar Foto"
             android:textColor="@color/black"
             android:textSize="28dp" />
 
@@ -75,7 +64,7 @@
         app:layout_constraintBottom_toTopOf="@+id/linearSair"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgEdit">
+        app:layout_constraintTop_toBottomOf="@+id/imgEditFoto">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -85,7 +74,7 @@
             <TextView
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:text="@string/txtDel"
+                android:text="@string/txtDelFoto"
                 android:textAlignment="center"
                 android:fontFamily="@font/montserrat_alternates"
                 android:textSize="20dp"
@@ -107,7 +96,7 @@
                 android:textAlignment="center"
                 android:text="Voltar" />
             <TextView
-                android:id="@+id/txtExcluir"
+                android:id="@+id/txtExcluirFoto"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20dp"
@@ -136,7 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_alternates"
-            android:text="Excluir Conta"
+            android:text="Excluir Foto"
             android:textColor="@color/black"
             android:textSize="28dp" />
     </LinearLayout>
@@ -156,11 +145,11 @@
         app:layout_constraintVertical_bias="0.06">
 
         <TextView
-            android:id="@+id/txtSair"
+            android:id="@+id/txtVoltarTela"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_alternates"
-            android:text="Sair"
+            android:text="Voltar"
             android:textColor="#ff5757"
             android:textSize="28dp" />
     </LinearLayout>

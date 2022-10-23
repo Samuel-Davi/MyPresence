@@ -1,11 +1,13 @@
 package com.example.finalproject.view
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.finalproject.databinding.ActivityTelaLoginAdmBinding
+import com.example.finalproject.util.ProgressDialogo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,6 +16,7 @@ import com.google.firebase.ktx.Firebase
 class TelaLoginAdm : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var data:FirebaseFirestore
+    private lateinit var progressDialog:ProgressDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
@@ -25,6 +28,10 @@ class TelaLoginAdm : AppCompatActivity() {
         }
         binding.botaoLogin.setOnClickListener {
             if(binding.textPassword.text.isNotEmpty() && binding.textemail.text.isNotEmpty()){
+                progressDialog = ProgressDialog(this)
+                progressDialog.setMessage("Carregando...")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
                 validaLogin(binding.textemail.text.toString(), binding.textPassword.text.toString())
             }else{
                 Toast.makeText(this@TelaLoginAdm, "Preencha os campos", Toast.LENGTH_LONG).show()
@@ -48,6 +55,7 @@ class TelaLoginAdm : AppCompatActivity() {
             }
             binding.textemail.text.clear()
             binding.textPassword.text.clear()
+            //progressDialog.messageBox("Carregando...", this@TelaLoginAdm)
         }
     }
     private fun validaLogin(email:String, senha:String){
@@ -69,10 +77,12 @@ class TelaLoginAdm : AppCompatActivity() {
                                 intent.putExtra("inst", inst)
                                 intent.putExtra("nome", name)
                                 Log.d("TAG", email);
+                                if(progressDialog.isShowing) progressDialog.dismiss()
                                 startActivity(intent);
                             }
                             Toast.makeText(this, "Bem vindo(a) $name", Toast.LENGTH_LONG).show()
                         }.addOnFailureListener { exception ->
+                            if(progressDialog.isShowing) progressDialog.dismiss()
                             Log.d("TAG", "get failed with ", exception)
                             Toast.makeText(this, "Email ou senha incorretos", Toast.LENGTH_LONG).show()
                         }

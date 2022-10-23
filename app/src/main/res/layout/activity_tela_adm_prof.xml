@@ -1,117 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cinza_claro"
-    tools:context=".view.TelaAdmProf">
-
-
-    <FrameLayout
-        android:id="@+id/fragments"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearBottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/btCadProf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/btcad"
-            android:fontFamily="@font/montserrat_alternates_bold"
-            android:text="Cadastrar professores"
-            android:textColor="@color/cinza_claro"
-            android:textSize="10dp"
-            android:visibility="invisible" />
-
-        <Button
-            android:id="@+id/btCadTurma"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/btcad"
-            android:fontFamily="@font/montserrat_alternates_bold"
-            android:text="Cadastrar turmas"
-            android:textColor="@color/cinza_claro"
-            android:textSize="10dp"
-            android:visibility="invisible" />
-    </LinearLayout>
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView18"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:scaleType="fitXY"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:srcCompat="@drawable/fundoadmbottom" />-->
+        android:background="@color/cinza_claro"
+        tools:context=".view.TelaAdmProf">
 
 
-    <LinearLayout
-        android:id="@+id/linearBottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/fundobottom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        <FrameLayout
+            android:id="@+id/fragments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/linearBottom">
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearBottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
-                android:id="@+id/imgHome"
+            <Button
+                android:id="@+id/btCadDisciplina"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/btcad"
+                android:fontFamily="@font/montserrat_alternates_bold"
+                android:text="Cadastrar disciplinas"
+                android:textColor="@color/cinza_claro"
+                android:textSize="10dp"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/btCadProf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                app:layout_constraintEnd_toStartOf="@+id/imageView20"
-                app:layout_constraintHorizontal_bias="0.461"
-                app:layout_constraintStart_toStartOf="@+id/linearBottom"
-                app:layout_constraintTop_toTopOf="@+id/linearBottom"
-                app:srcCompat="@drawable/imghome" />
+                android:backgroundTint="@color/btcad"
+                android:fontFamily="@font/montserrat_alternates_bold"
+                android:text="Cadastrar professores"
+                android:textColor="@color/cinza_claro"
+                android:textSize="10dp"
+                android:visibility="invisible" />
 
-            <ImageView
-                android:id="@+id/imgAdd"
+            <Button
+                android:id="@+id/btCadTurma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                app:layout_constraintEnd_toStartOf="@+id/imageView21"
-                app:layout_constraintTop_toTopOf="@+id/linearBottom"
-                app:srcCompat="@drawable/imgadd" />
-
-            <ImageView
-                android:id="@+id/imgAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                app:layout_constraintEnd_toEndOf="@+id/linearBottom"
-                app:layout_constraintTop_toTopOf="@+id/linearBottom"
-                app:srcCompat="@drawable/imgaccountdes" />
+                android:backgroundTint="@color/btcad"
+                android:fontFamily="@font/montserrat_alternates_bold"
+                android:text="Cadastrar turmas"
+                android:textColor="@color/cinza_claro"
+                android:textSize="10dp"
+                android:visibility="invisible" />
         </LinearLayout>
-    </LinearLayout>
+
+        <!--    <ImageView-->
+        <!--        android:id="@+id/imageView18"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:scaleType="fitXY"-->
+        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintHorizontal_bias="0.0"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:srcCompat="@drawable/fundoadmbottom" />-->
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/linearBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/fundobottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/linearBottom">
+
+                <ImageView
+                    android:id="@+id/imgHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView20"
+                    app:layout_constraintHorizontal_bias="0.461"
+                    app:layout_constraintStart_toStartOf="@+id/linearBottom"
+                    app:layout_constraintTop_toTopOf="@+id/linearBottom"
+                    app:srcCompat="@drawable/imghome" />
+
+                <ImageView
+                    android:id="@+id/imgAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView21"
+                    app:layout_constraintTop_toTopOf="@+id/linearBottom"
+                    app:srcCompat="@drawable/imgadd" />
+
+                <ImageView
+                    android:id="@+id/imgAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    app:layout_constraintEnd_toEndOf="@+id/linearBottom"
+                    app:layout_constraintTop_toTopOf="@+id/linearBottom"
+                    app:srcCompat="@drawable/imgaccountdes" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

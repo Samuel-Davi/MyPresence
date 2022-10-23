@@ -3,6 +3,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()  // Maven Central repository
+        maven { url "https://jitpack.io" }
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.13'
@@ -18,3 +19,5 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+

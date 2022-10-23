@@ -3,6 +3,7 @@
     <string name="sublinhar"><u>underline</u></string>
     <string name="txttchau">Sua conta foi excluída! Esperamos que volte logo :)</string>
     <string name="txtDel">Tem certeza de que deseja excluir sua conta? Essa ação não poderá ser desfeita.</string>
+    <string name="txtDelFoto">Tem certeza de que deseja excluir sua foto? Essa ação não poderá ser desfeita.</string>
     <string name="txtAdmProf">Parece que ainda não há professores por aqui!</string>
     <string name="txtAdmTurma">Parece que ainda não há turmas por aqui!</string>
     <string name="txtCadTurma">Insira uma lista com os nomes dos alunos que você deseja cadastrar nessa turma</string>

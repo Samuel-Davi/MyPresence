@@ -31,9 +31,6 @@ class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var disciplinas:ArrayList<String>
 
-
-    private lateinit var profs:ArrayList<Prof>
-    private lateinit var recyclerView: RecyclerView
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,27 +63,39 @@ class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
         val email = data?.getString("email")
 
 
-        binding.imgAdd.setOnClickListener {
-            if(!valorClick){
-                binding.btCadProf.isVisible = true
-                binding.btCadTurma.isVisible = true
-                valorClick = !valorClick
-            }else{
-                binding.btCadProf.isVisible = false
-                binding.btCadTurma.isVisible = false
-                valorClick = !valorClick
+        with(binding){
+            imgAdd.setOnClickListener {
+                if(!valorClick){
+                    btCadProf.isVisible = true
+                    btCadTurma.isVisible = true
+                    btCadDisciplina.isVisible = true
+                    valorClick = !valorClick
+                }else{
+                    btCadProf.isVisible = false
+                    btCadTurma.isVisible = false
+                    btCadDisciplina.isVisible = false
+                    valorClick = !valorClick
+                }
+            }
+            btCadProf.setOnClickListener {
+                getDisciplinas(inst.toString(), email.toString(), nome.toString())
+            }
+            btCadTurma.setOnClickListener {
+                val intent = Intent(this@TelaAdmProf, TelaCadTurma::class.java)
+                intent.putExtra("inst", inst)
+                intent.putExtra("email", email)
+                intent.putExtra("nome", nome)
+                startActivity(intent)
+            }
+            btCadDisciplina.setOnClickListener{
+                val intent = Intent(this@TelaAdmProf, TelaCadDisciplinas::class.java)
+                intent.putExtra("inst", inst)
+                intent.putExtra("email", email)
+                intent.putExtra("nome", nome)
+                startActivity(intent)
             }
         }
-        binding.btCadProf.setOnClickListener {
-            getDisciplinas(inst.toString(), email.toString(), nome.toString())
-        }
-        binding.btCadTurma.setOnClickListener {
-            val intent = Intent(this, TelaCadTurma::class.java)
-            intent.putExtra("inst", inst)
-            intent.putExtra("email", email)
-            intent.putExtra("nome", nome)
-            startActivity(intent)
-        }
+
     }
 
     private fun getDisciplinas(inst: String, email:String, nome:String){

@@ -1,23 +1,28 @@
 package com.example.finalproject.fragment
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.finalproject.R
 import com.example.finalproject.view.TelaEditAdm
+import com.example.finalproject.view.TelaEditFotoAdm
 import com.example.finalproject.view.TelaEscolha
 import com.example.finalproject.view.TelaTchau
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import java.net.URI
 
 
 class AdmAccountFragment : Fragment() {
@@ -76,8 +81,29 @@ class AdmAccountFragment : Fragment() {
             txtDel.isVisible = true;
         }
 
+        val btEditFoto:ImageView = view?.findViewById(R.id.btEditFotoAdm)!!
+        btEditFoto.setOnClickListener {
+            val intent = Intent(activity, TelaEditFotoAdm::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("senha", senha)
+            intent.putExtra("nome", nome)
+            intent.putExtra("inst", inst)
+            startActivity(intent)
+        }
+
+        val imgEdit:ImageView = view?.findViewById(R.id.imgEdit)!!
+        imgEdit.setOnClickListener {
+            val intent = Intent(activity, TelaEditFotoAdm::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("senha", senha)
+            intent.putExtra("nome", nome)
+            intent.putExtra("inst", inst)
+            startActivity(intent)
+        }
+
         return view;
     }
+
 
     private fun deleteAdm(inst:String){
         val user = Firebase.auth.currentUser

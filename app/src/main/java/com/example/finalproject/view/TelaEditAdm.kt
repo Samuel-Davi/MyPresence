@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.view.WindowCompat
 import com.example.finalproject.databinding.ActivityTelaEditAdmBinding
 import com.example.finalproject.model.UserModel
 import com.example.finalproject.network.ApiClient
@@ -18,6 +19,7 @@ class TelaEditAdm : AppCompatActivity() {
     private lateinit var db:FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         val binding = ActivityTelaEditAdmBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

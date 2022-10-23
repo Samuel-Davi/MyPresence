@@ -37,20 +37,21 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/imgcllr2" />
+                android:layout_width="400dp"
+                android:scaleType="fitXY"
+                android:layout_height="350dp"
+                app:srcCompat="@drawable/imgonboarding1" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="360dp"
             android:layout_weight="1"
-            android:textAlignment="center"
             android:layout_height="wrap_content"
             android:textSize="40dp"
             android:fontFamily="@font/alata"
             android:textColor="@color/white"
+            android:textAlignment="center"
             android:text="Registre sua presença" />
     </LinearLayout>
 

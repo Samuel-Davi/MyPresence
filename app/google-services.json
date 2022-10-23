@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "342451417380",
-    "project_id": "projetofinal-be7aa",
-    "storage_bucket": "projetofinal-be7aa.appspot.com"
+    "project_number": "71168016951",
+    "project_id": "mypresence-fec2d",
+    "storage_bucket": "mypresence-fec2d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:342451417380:android:488bfd24686139172643b1",
+        "mobilesdk_app_id": "1:71168016951:android:2f661690bc9a0c8018b5b2",
         "android_client_info": {
           "package_name": "com.example.finalproject"
         }
       },
       "oauth_client": [
         {
-          "client_id": "342451417380-enpsnrgtitrb6pb7sisgdei26qd1j5u2.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.finalproject",
-            "certificate_hash": "270b1471f5d8a050a9a4d5b64c39fddd36039fe5"
-          }
-        },
-        {
-          "client_id": "342451417380-h3ekctsbsokt5hcrid40nvo9ibtioust.apps.googleusercontent.com",
+          "client_id": "71168016951-po1ai72qqenia2sd04k55qom3qpivkn6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB9MSvqlgZ2WtOdXCmyZ-OzaR63wCykojM"
+          "current_key": "AIzaSyDNhZjc-ADON22Ct4KkxNKqpxyEFytaiCg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "342451417380-h3ekctsbsokt5hcrid40nvo9ibtioust.apps.googleusercontent.com",
+              "client_id": "71168016951-po1ai72qqenia2sd04k55qom3qpivkn6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

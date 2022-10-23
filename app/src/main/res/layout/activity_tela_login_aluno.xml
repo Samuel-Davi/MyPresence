@@ -129,6 +129,7 @@
                     android:id="@+id/botaoLogin"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/cinza_claro"
                     android:background="@drawable/buttonstyle"
                     android:backgroundTint="@color/azulpadrao"
                     android:fontFamily="@font/alata"

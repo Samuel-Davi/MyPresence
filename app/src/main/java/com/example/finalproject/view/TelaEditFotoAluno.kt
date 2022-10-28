@@ -16,90 +16,66 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import com.example.finalproject.databinding.ActivityTelaEditFotoAdmBinding
-import com.example.finalproject.util.FirebaseStorageManager
+import com.example.finalproject.databinding.ActivityTelaEditFotoAlunoBinding
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_tela_edit_foto_adm.*
+import kotlinx.android.synthetic.main.activity_tela_edit_foto_aluno.*
+import kotlinx.coroutines.selects.select
 import java.io.File
-import java.text.SimpleDateFormat
-import java.util.*
 
-class TelaEditFotoAdm : AppCompatActivity() {
+class TelaEditFotoAluno : AppCompatActivity() {
 
-    private lateinit var binding:ActivityTelaEditFotoAdmBinding
-    private lateinit var imageUri:Uri
+    private lateinit var binding: ActivityTelaEditFotoAlunoBinding
+    private lateinit var imageUri: Uri
     private lateinit var bitmap: Bitmap
     private lateinit var inst:String
-    private lateinit var progressDialog:ProgressDialog
+    private lateinit var ra:String
+    private lateinit var progressDialog: ProgressDialog
     val storageRef = FirebaseStorage.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTelaEditFotoAdmBinding.inflate(layoutInflater)
+        binding = ActivityTelaEditFotoAlunoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val data = intent.extras
         val email = data?.getString("email")
+        val turma = data?.getString("turma")
         val senha = data?.getString("senha")
         val nome = data?.getString("nome")
-        inst = data?.getString("inst").toString()
+        val sobrenome = data?.getString("sob")
+        ra = data?.getString("ra").toString()
+        Log.d("TAG1", ra)
 
-        getImage()
+        inst = data?.getString("inst").toString()
+        Log.d("TAG2", inst)
+
+        val localFile = File.createTempFile("tempImage", "png")
+        storageRef.child("Adm/$inst/alunos/$ra/$ra.png").getFile(localFile)
+            .addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                Log.d("TAG", bitmap.toString())
+                binding.imgEditFotoAluno.setImageBitmap(bitmap)
+            }.addOnFailureListener{
+                Log.e("TAG", it.message.toString())
+            }
 
         with(binding){
-            linearEdit.setOnClickListener {
+            linearEditFotoAluno.setOnClickListener {
                 selectImage()
             }
-            txtDel.setOnClickListener {
-                deleteImage(inst)
-            }
-            txtVoltarTela.setOnClickListener {
-                val intent = Intent(this@TelaEditFotoAdm, TelaAdmProf::class.java)
+            linearSairTelaOpcAluno.setOnClickListener {
+                val intent = Intent(this@TelaEditFotoAluno, TelaOpcAluno::class.java)
                 intent.putExtra("email", email)
                 intent.putExtra("senha", senha)
                 intent.putExtra("nome", nome)
                 intent.putExtra("inst", inst)
-                startActivity(intent)
+                intent.putExtra("ra", ra)
+                intent.putExtra("sob", sobrenome)
+                intent.putExtra("turma", turma)
+                startActivity(intent);
             }
-        }
-    }
-
-    private fun getImage(){
-        val localFile = File.createTempFile("tempImage", "png")
-        storageRef.child("Adm/$inst/admImage.png").getFile(localFile)
-            .addOnSuccessListener {
-                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                Log.d("TAG", bitmap.toString())
-                binding.imgEditFoto.setImageBitmap(bitmap)
-            }.addOnFailureListener{
-                Log.e("TAG", it.message.toString())
-            }
-    }
-
-    private fun deleteImage(inst:String){
-
-        binding.linearCaixaDel.isVisible = true
-        binding.txtDel.isVisible = false
-
-        binding.txtVoltar.setOnClickListener {
-            binding.linearCaixaDel.isVisible = false
-            binding.txtDel.isVisible = true
-        }
-
-        binding.txtExcluirFoto.setOnClickListener {
-            storageRef.child("Adm/$inst/admImage.png")
-                .delete()
-                .addOnSuccessListener {
-                    Toast.makeText(this@TelaEditFotoAdm, "Imagem deletada", Toast.LENGTH_LONG).show()
-                    binding.linearCaixaDel.isVisible = false
-                    binding.txtDel.isVisible = true
-                    getImage()
-                }.addOnFailureListener {
-                    Toast.makeText(this@TelaEditFotoAdm, "Falha ao excluir imagem", Toast.LENGTH_LONG).show()
-                    Log.d("TAG", it.message.toString())
-                }
         }
     }
 
@@ -136,12 +112,12 @@ class TelaEditFotoAdm : AppCompatActivity() {
                 if (Build.VERSION.SDK_INT >= 28) {
                     val source = ImageDecoder.createSource(this.contentResolver,imageUri!!)
                     bitmap = ImageDecoder.decodeBitmap(source)
-                    imgEditFoto.setImageBitmap(bitmap)
+                    imgEditFotoAluno.setImageBitmap(bitmap)
                     progressDialog = ProgressDialog(this)
                     progressDialog.setMessage("Imagem carregando...")
-                    val uploadTask = mStorageRef.child("Adm/$inst/admImage.png").putFile(imageUri)
+                    val uploadTask = mStorageRef.child("Adm/$inst/alunos/$ra/$ra.png").putFile(imageUri)
                     uploadTask.addOnSuccessListener {
-                        Toast.makeText(this@TelaEditFotoAdm, "Imagem atualizada", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@TelaEditFotoAluno, "Imagem atualizada", Toast.LENGTH_LONG).show()
                         if (progressDialog.isShowing) progressDialog.dismiss()
                     }.addOnFailureListener{
                         Log.e("TAG", it.message.toString())

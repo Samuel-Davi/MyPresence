@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 apply plugin: 'com.android.application'
@@ -9,12 +10,12 @@ apply plugin: 'com.google.gms.google-services'
 
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.finalproject"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -37,6 +38,12 @@ android {
     viewBinding{
         enabled = true;
     }
+    dataBinding{
+        enabled = true;
+    }
+    aaptOptions{
+        noCompress "tflite"
+    }
 }
 
 dependencies {
@@ -54,7 +61,11 @@ dependencies {
     //firebase
     implementation platform('com.google.firebase:firebase-bom:31.0.0')
     implementation 'com.google.firebase:firebase-auth-ktx'
-
+    //mlkit
+    implementation 'com.google.mlkit:face-detection:16.1.5'
+    implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.1.0'
+    implementation 'com.google.mlkit:object-detection-custom:17.0.0'
+    //
     implementation 'com.google.firebase:firebase-firestore'
     implementation platform('com.google.firebase:firebase-bom:30.0.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
@@ -62,6 +73,16 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:8.0.2'
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
     implementation 'com.google.firebase:firebase-storage-ktx'
+
+    //camerax
+    def camerax_version = "1.1.0-beta01"
+    implementation "androidx.camera:camera-core:${camerax_version}"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+    implementation "androidx.camera:camera-video:${camerax_version}"
+
+    implementation "androidx.camera:camera-view:${camerax_version}"
+    implementation "androidx.camera:camera-extensions:${camerax_version}"
 
     //imagecircle
     implementation 'de.hdodenhof:circleimageview:3.1.0'
@@ -73,4 +94,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     //cardView
     implementation("androidx.cardview:cardview:1.0.0")
+    //camerakit
+//    implementation 'com.wonderkiln.camerakit:0.13.1'
 }

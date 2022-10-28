@@ -1,5 +1,6 @@
 package com.example.finalproject.view
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +21,9 @@ class TelaLoginProf : AppCompatActivity() {
     private lateinit var db:FirebaseFirestore
     private lateinit var auth:FirebaseAuth
     lateinit var instituicaoSelecionada:String
+    private lateinit var progressDialog: ProgressDialog
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = FirebaseFirestore.getInstance()
@@ -51,6 +55,10 @@ class TelaLoginProf : AppCompatActivity() {
 
         binding.botaoLogin.setOnClickListener {
             if(binding.textEmail.text.isNotEmpty() && binding.textPassword.text.isNotEmpty()){
+                progressDialog = ProgressDialog(this)
+                progressDialog.setMessage("Carregando...")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
                 validaLogin(binding.textEmail.text.toString(), binding.textPassword.text.toString())
             }else{
                 Toast.makeText(this@TelaLoginProf, "Preencha os campos", Toast.LENGTH_LONG).show()
@@ -103,6 +111,7 @@ class TelaLoginProf : AppCompatActivity() {
                                 intent.putExtra("email", email)
                                 intent.putExtra("inst", instituicaoSelecionada)
                                 startActivity(intent);
+                                if(progressDialog.isShowing) progressDialog.dismiss()
                                 Toast.makeText(this, "Bem vindo(a) $name", Toast.LENGTH_LONG).show()
                             }
                         }.addOnFailureListener { exception ->

@@ -1,6 +1,8 @@
 package com.example.finalproject.view
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -31,8 +34,11 @@ class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var disciplinas:ArrayList<String>
 
+//    private lateinit var bitmap:Bitmap
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         val binding = ActivityTelaAdmProfBinding.inflate(layoutInflater)
         var valorClick:Boolean = false;
@@ -50,27 +56,28 @@ class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
         homeFragment = AdmHomeFragment()
         accountFragment = AdmAccountFragment()
 
+        val data = intent.extras
+        val nome = data?.getString("nome")
+        val senha = data?.getString("senha")
+        val inst = data?.getString("inst")
+        val email = data?.getString("email")
+//        val bitmap = data?.getByteArray("bitmap")
 
         val fragmentTransaction =
             supportFragmentManager.beginTransaction().add(R.id.fragments, homeFragment)
         fragmentTransaction.commit()
 
 
-        val data = intent.extras
-        val nome = data?.getString("nome")
-        val senha = data?.getString("senha")
-        val inst = data?.getString("inst")
-        val email = data?.getString("email")
-
-
         with(binding){
             imgAdd.setOnClickListener {
                 if(!valorClick){
+//                    linearLayout2.isVisible = true
                     btCadProf.isVisible = true
                     btCadTurma.isVisible = true
                     btCadDisciplina.isVisible = true
                     valorClick = !valorClick
                 }else{
+//                    linearLayout2.isVisible = false
                     btCadProf.isVisible = false
                     btCadTurma.isVisible = false
                     btCadDisciplina.isVisible = false

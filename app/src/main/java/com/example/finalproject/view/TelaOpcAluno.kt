@@ -1,18 +1,22 @@
 package com.example.finalproject.view
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.core.view.isVisible
 import com.example.finalproject.databinding.ActivityTelaOpcAlunoBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 class TelaOpcAluno : AppCompatActivity() {
     private lateinit var db:FirebaseFirestore
+    private var storageRef = FirebaseStorage.getInstance().reference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityTelaOpcAlunoBinding.inflate(layoutInflater)
@@ -24,60 +28,60 @@ class TelaOpcAluno : AppCompatActivity() {
         val data = intent.extras
         val email = data?.getString("email")
         val turma = data?.getString("turma")
-        val ra = data?.getString("RA")
+        val ra = data?.getString("ra")
+        Log.d("TAG!", ra.toString())
         val nome = data?.getString("nome")
         val sob = data?.getString("sob")
+        val inst = data?.getString("inst")
 
-        binding.imgHome.setOnClickListener {
-            val intent = Intent(this, TelaMainAluno::class.java)
-            intent.putExtra("email", email)
-            intent.putExtra("turma", turma)
-            intent.putExtra("nome", nome)
-            intent.putExtra("sob", sob)
-            intent.putExtra("RA", ra)
-            startActivity(intent)
-        }
-
-        binding.txtSair.setOnClickListener {
-            val intent = Intent(this, TelaEscolha::class.java)
-            startActivity(intent)
-        }
-
-//        binding.txtEdit.setOnClickListener {
-//            val intent = Intent(this, TelaEditAdm::class.java)
-//            intent.putExtra("email", email)
-//            intent.putExtra("turma", turma)
-//            intent.putExtra("nome", nome)
-//            intent.putExtra("sob", sob)
-//            startActivity(intent)
-//        }
-        binding.txtDel.setOnClickListener {
-            binding.linearCaixaDel.isVisible = true;
-            binding.txtDel.isVisible = false
-        }
-        binding.txtVoltar.setOnClickListener {
-            binding.linearCaixaDel.isVisible = false
-            binding.txtDel.isVisible = true
-        }
-        binding.txtExcluir.setOnClickListener {
-            deleteAluno(email.toString())
-            binding.linearCaixaDel.isVisible = false
-            binding.txtDel.isVisible = true;
-        }
-    }
-    private fun deleteAluno(email:String){
-        val user = Firebase.auth.currentUser
-        user!!.delete()
-            .addOnCompleteListener { task->
-                if(task.isSuccessful){
-                    db.collection("Adm").document(email)
-                        .delete()
-                        .addOnSuccessListener {
-                            Toast.makeText(this, "Conta deletada com Sucesso", Toast.LENGTH_LONG).show();
-                            startActivity(Intent(this, TelaTchau::class.java))
-                        }
-                        .addOnFailureListener { e -> Log.w("TAG", "Error deleting document", e) }
-                }
+        val localFile = File.createTempFile("tempImage", "png")
+        storageRef.child("Adm/$inst/alunos/$ra/$ra.png").getFile(localFile)
+            .addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                Log.d("TAG", bitmap.toString())
+                binding.imgEditTelaOpc.setImageBitmap(bitmap)
+            }.addOnFailureListener{
+                Log.e("TAG", it.message.toString())
             }
+
+        with(binding){
+            imgHome.setOnClickListener {
+                val intent = Intent(this@TelaOpcAluno, TelaMainAluno::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("turma", turma)
+                intent.putExtra("nome", nome)
+                intent.putExtra("sob", sob)
+                intent.putExtra("ra", ra)
+                intent.putExtra("inst", inst)
+                startActivity(intent)
+            }
+
+            txtSair.setOnClickListener {
+                val intent = Intent(this@TelaOpcAluno, TelaEscolha::class.java)
+                startActivity(intent)
+            }
+            imgEditTelaOpcAluno.setOnClickListener {
+                val intent = Intent(this@TelaOpcAluno, TelaEditFotoAluno::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("turma", turma)
+                intent.putExtra("nome", nome)
+                intent.putExtra("sob", sob)
+                intent.putExtra("ra", ra)
+                intent.putExtra("inst", inst)
+                startActivity(intent)
+            }
+
+            imgcamera.setOnClickListener{
+                val intent = Intent(this@TelaOpcAluno, TelaCamera::class.java)
+                intent.putExtra("nome", nome)
+                intent.putExtra("sob", sob)
+                intent.putExtra("turma", turma)
+                intent.putExtra("email", email)
+                intent.putExtra("ra", ra)
+                intent.putExtra("inst", inst)
+                startActivity(intent)
+            }
+
+        }
     }
 }

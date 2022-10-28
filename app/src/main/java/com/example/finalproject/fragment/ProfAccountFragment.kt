@@ -12,10 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.finalproject.R
-import com.example.finalproject.view.TelaEditAdm
-import com.example.finalproject.view.TelaEditProf
-import com.example.finalproject.view.TelaEscolha
-import com.example.finalproject.view.TelaTchau
+import com.example.finalproject.view.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -23,6 +20,8 @@ import com.google.firebase.ktx.Firebase
 class ProfAccountFragment : Fragment() {
 
     private lateinit var db:FirebaseFirestore
+    private lateinit var disciplinas:ArrayList<String>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,12 +47,9 @@ class ProfAccountFragment : Fragment() {
 
         val btEdit: TextView = view?.findViewById(R.id.txtEditProf)!!
         btEdit.setOnClickListener {
+            getDisciplinas(inst.toString(), email.toString(), nome.toString(), disciplina.toString(), sob.toString())
             val intent = Intent(activity, TelaEditProf::class.java)
-            intent.putExtra("email", email)
-            intent.putExtra("disciplina", disciplina)
-            intent.putExtra("nome", nome)
-            intent.putExtra("sob", sob)
-            startActivity(intent)
+
         }
 
         val linearCaixaDel: LinearLayout = view?.findViewById(R.id.linearCaixaDel)!!
@@ -77,6 +73,28 @@ class ProfAccountFragment : Fragment() {
         }
 
         return view
+    }
+
+    private fun getDisciplinas(inst: String, email:String, nome:String, disciplina:String, sob:String){
+        db = FirebaseFirestore.getInstance()
+        val list = db.collection("Adm").document(inst).collection("Disciplinas")
+        list.get().addOnSuccessListener {documents ->
+            disciplinas = ArrayList()
+            for(document in documents){
+                var nomeDisc = document.get("nome").toString()
+                disciplinas.add(nomeDisc)
+                Log.d("TAG1", disciplinas.toString())
+            }
+            val intent = Intent(activity, TelaEditProf::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("disciplina", disciplina)
+            intent.putExtra("nome", nome)
+            intent.putExtra("sob", sob)
+            intent.putExtra("disciplinas", disciplinas)
+            startActivity(intent)
+        }.addOnFailureListener {
+            Log.w("TAG", "Error getting documents: ", it)
+        }
     }
 
     private fun deleteProf(email:String, inst:String){

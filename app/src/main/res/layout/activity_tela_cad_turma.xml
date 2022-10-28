@@ -1,196 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cinza_claro"
-    android:orientation="vertical"
-    tools:context=".view.TelaCadTurma">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/imageView24"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/headerblue" />
-
-        <ImageView
-            android:id="@+id/btBack"
-            android:layout_width="22dp"
-            android:layout_height="28dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.078"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView24"
-            app:layout_constraintVertical_bias="0.266"
-            app:srcCompat="@drawable/imgback" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Criar Turma"
-        android:textSize="36dp"
-        android:layout_marginLeft="20dp"
-        android:fontFamily="@font/montserrat_alternates_bold"
-        android:textColor="@color/azulescuro"/>
-
+    android:fillViewport="true">
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cinza_claro"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nome da turma"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"/>
+        tools:context=".view.TelaCadTurma">
 
-        <EditText
-            android:id="@+id/edtNomeTurma"
-            android:layout_width="220dp"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:hint="Ex: I3A"
-            android:textColorHint="@color/cinza"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:background="@drawable/edittextstyle"/>
-        <TextView
-            android:id="@+id/textView15"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Curso"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"/>
+            android:layout_height="wrap_content">
 
-        <Spinner
-            android:id="@+id/spinnerCursoTurma"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            <ImageView
+                android:id="@+id/imageView24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/headerblue" />
+
+            <ImageView
+                android:id="@+id/btBack"
+                android:layout_width="22dp"
+                android:layout_height="28dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.078"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView24"
+                app:layout_constraintVertical_bias="0.266"
+                app:srcCompat="@drawable/imgback" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textView17"
-            android:layout_width="match_parent"
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Série"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"/>
+            android:text="Criar Turma"
+            android:textSize="36dp"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/montserrat_alternates_bold"
+            android:textColor="@color/azulescuro"/>
 
-        <Spinner
-            android:id="@+id/spinnerSerieTurma"
-            android:layout_width="220dp"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome da turma"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/edtNomeTurma"
+                android:layout_width="220dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:hint="Ex: I3A"
+                android:textColorHint="@color/cinza"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittextstyle"/>
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Curso"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"/>
+
+            <Spinner
+                android:id="@+id/spinnerCursoTurma"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Série"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"/>
+
+            <Spinner
+                android:id="@+id/spinnerSerieTurma"
+                android:layout_width="220dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"/>
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Turma"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"/>
+
+            <Spinner
+                android:id="@+id/spinnerTurma"
+                android:layout_width="220dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:hint="Ex: I3A"
+                android:layout_marginTop="10dp"
+                android:textColorHint="@color/black"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"/>
+        </LinearLayout>
+
         <TextView
-            android:id="@+id/textView18"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Turma"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"/>
-
-        <Spinner
-            android:id="@+id/spinnerTurma"
-            android:layout_width="220dp"
+            android:id="@+id/textView14"
+            android:layout_width="350dp"
             android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:hint="Ex: I3A"
-            android:layout_marginTop="10dp"
-            android:textColorHint="@color/black"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"/>
+            android:textColor="@color/black"
+            android:fontFamily="@font/montserrat_alternates"
+            android:textSize="16dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/txtCadTurma" />
+
+        <Button
+            android:id="@+id/btInserir"
+            android:layout_width="180dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="Inserir Lista"
+            android:textColor="@color/cinza_claro"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/buttonstyle"
+            android:backgroundTint="@color/azulpadrao"
+            android:drawableLeft="@drawable/imgadd2"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alata"
+                android:text="Finalizar"
+                android:textColor="@color/azulescuro"
+                android:textSize="26dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.78"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.645" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cinza_claro"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.659"
+                app:layout_constraintStart_toEndOf="@+id/textView16"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.645"
+                app:srcCompat="@drawable/img_btnext" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="350dp"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:fontFamily="@font/montserrat_alternates"
-        android:textSize="16dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/txtCadTurma" />
-
-    <Button
-        android:id="@+id/btInserir"
-        android:layout_width="180dp"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:text="Inserir Lista"
-        android:textColor="@color/cinza_claro"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/buttonstyle"
-        android:backgroundTint="@color/azulpadrao"
-        android:drawableLeft="@drawable/imgadd2"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/alata"
-            android:text="Finalizar"
-            android:textColor="@color/azulescuro"
-            android:textSize="26dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.78"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.645" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/cinza_claro"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.659"
-            app:layout_constraintStart_toEndOf="@+id/textView16"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.645"
-            app:srcCompat="@drawable/img_btnext" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</LinearLayout>
+</ScrollView>

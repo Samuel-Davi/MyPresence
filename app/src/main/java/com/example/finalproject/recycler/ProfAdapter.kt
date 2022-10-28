@@ -29,11 +29,13 @@ class ProfAdapter(var profs:ArrayList<Prof>): RecyclerView.Adapter<ProfAdapter.M
         holder.itemTextDisciplina.text = currentProf.disciplina
 
         holder.constraintLayout.setOnClickListener {
-            if (holder.layoutDisciplina.isVisible){
-                holder.layoutDisciplina.isVisible = false
+            if (holder.txtDisc.isVisible){
+                holder.txtDisc.isVisible = false
+                holder.itemTextDisciplina.isVisible = false
                 holder.itemImage.setImageResource(R.drawable.img_btnext)
             }else{
-                holder.layoutDisciplina.isVisible = true
+                holder.txtDisc.isVisible = true
+                holder.itemTextDisciplina.isVisible = true
                 holder.itemImage.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24)
             }
         }
@@ -45,6 +47,7 @@ class ProfAdapter(var profs:ArrayList<Prof>): RecyclerView.Adapter<ProfAdapter.M
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var itemText: TextView = itemView.findViewById(R.id.itemText)
+        var txtDisc:TextView = itemView.findViewById(R.id.txtDisc)
         var itemImage: ImageButton = itemView.findViewById(R.id.itemImage)
         var layoutDisciplina = itemView.findViewById<View>(R.id.layoutDisciplina)
         var constraintLayout:View = itemView.findViewById(R.id.constraintLayout)

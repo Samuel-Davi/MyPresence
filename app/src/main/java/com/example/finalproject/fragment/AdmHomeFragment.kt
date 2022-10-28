@@ -1,13 +1,20 @@
 package com.example.finalproject.fragment
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.BitmapFactory.decodeFile
+import android.graphics.Movie.decodeFile
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.finalproject.R
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 
 class AdmHomeFragment : Fragment() {
@@ -17,9 +24,15 @@ class AdmHomeFragment : Fragment() {
 //
     private lateinit var profsFragment: FragmentProfs
     private lateinit var turmasFragment: FragmentTurmas
+    private lateinit var bitmap: Bitmap
+
+    val storageRef = FirebaseStorage.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        val bit = requireArguments().getByteArray("bitmap")
+
 
     }
 
@@ -30,9 +43,26 @@ class AdmHomeFragment : Fragment() {
     ): View? {
         val view:View = inflater.inflate(R.layout.fragment_adm_home, container, false)
 
+        val imageAdm: ImageView = view.findViewById(R.id.imgAdmPrincipal)
+
+
         val data = activity?.intent?.extras
         val nome = data?.getString("nome")
         val email = data?.getString("email")
+        val inst = data?.getString("inst")
+
+
+        val localFile = File.createTempFile("tempImage", "png")
+        storageRef.child("Adm/$inst/admImage.png").getFile(localFile)
+            .addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                Log.d("TAG", bitmap.toString())
+                imageAdm.setImageBitmap(bitmap)
+            }.addOnFailureListener{
+                Log.e("TAG", it.message.toString())
+            }
+
+
 
         val txtOla:TextView = view.findViewById(R.id.txtOla)
         txtOla.text = "Olá, $nome"
@@ -48,10 +78,14 @@ class AdmHomeFragment : Fragment() {
 
         buttonProfs?.setOnClickListener {
             replaceFragment(profsFragment)
+            buttonProfs.setBackgroundResource(R.drawable.editlink)
+            buttonTurmas.setBackgroundResource(0)
             Log.d("TAG", "ta aq")
         }
         buttonTurmas?.setOnClickListener {
             replaceFragment(turmasFragment)
+            buttonTurmas.setBackgroundResource(R.drawable.editlink)
+            buttonProfs.setBackgroundResource(0)
             Log.d("TAG", "agr ta aq")
         }
 

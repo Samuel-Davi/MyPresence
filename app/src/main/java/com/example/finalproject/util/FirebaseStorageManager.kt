@@ -9,9 +9,9 @@ import com.google.firebase.storage.FirebaseStorage
 
 class FirebaseStorageManager {
     private val mStorageRef = FirebaseStorage.getInstance().reference
-    private lateinit var progressDialog: ProgressDialog
+    lateinit var progressDialog: ProgressDialog
 
-    fun uploadImage(context: Context, imageUri: Uri, inst:String){
+    fun uploadImageAdm(context: Context, imageUri: Uri, inst:String){
         progressDialog = ProgressDialog(context)
         progressDialog.setMessage("Imagem carregando...")
         val uploadTask = mStorageRef.child("Adm/$inst/profilePic.png").putFile(imageUri)

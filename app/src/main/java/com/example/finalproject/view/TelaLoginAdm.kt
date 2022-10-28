@@ -2,6 +2,8 @@ package com.example.finalproject.view
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,11 +14,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 class TelaLoginAdm : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var data:FirebaseFirestore
     private lateinit var progressDialog:ProgressDialog
+    val storageRef = FirebaseStorage.getInstance().reference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
@@ -87,6 +92,7 @@ class TelaLoginAdm : AppCompatActivity() {
                             Toast.makeText(this, "Email ou senha incorretos", Toast.LENGTH_LONG).show()
                         }
                 }else{
+                    if(progressDialog.isShowing) progressDialog.dismiss()
                     Log.e("TAG", "signInWithEmail:failure", task.exception)
                     Toast.makeText(this, "Email ou senha incorretos",
                         Toast.LENGTH_SHORT).show()

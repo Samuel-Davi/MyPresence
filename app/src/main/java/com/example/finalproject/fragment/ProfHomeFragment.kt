@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.finalproject.R
+import com.google.firebase.storage.FirebaseStorage
 
 
 class ProfHomeFragment : Fragment() {
@@ -20,6 +22,8 @@ class ProfHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_prof_home, container, false)
+
+
 
         val data = activity?.intent?.extras
         val nome = data?.getString("nome")

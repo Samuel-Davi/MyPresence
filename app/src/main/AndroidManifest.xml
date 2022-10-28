@@ -3,7 +3,13 @@
     package="com.example.finalproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="33" />
+
+    <uses-feature android:name="android.hardware.camera.any" />
 
     <application
         android:allowBackup="true"
@@ -14,10 +20,19 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.TelaEditFotoAdm"
-            android:exported="false" >
+            android:name=".view.TelaCamera"
+            android:exported="false" />
 
-        </activity>
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="face" />
+
+        <activity
+            android:name=".view.TelaEditFotoAluno"
+            android:exported="false" />
+        <activity
+            android:name=".view.TelaEditFotoAdm"
+            android:exported="false" />
         <activity
             android:name=".view.TelaCadDisciplinas"
             android:exported="false" />

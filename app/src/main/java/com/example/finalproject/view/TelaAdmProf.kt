@@ -37,6 +37,8 @@ class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
 
 //    private lateinit var bitmap:Bitmap
 
+
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -64,7 +66,7 @@ class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
 //        val bitmap = data?.getByteArray("bitmap")
 
         val fragmentTransaction =
-            supportFragmentManager.beginTransaction().add(R.id.fragments, homeFragment)
+            supportFragmentManager.beginTransaction().add(R.id.fragmentsAdmProf, homeFragment)
         fragmentTransaction.commit()
 
 
@@ -128,7 +130,7 @@ class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
 
     private fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragments, fragment)
+        fragmentTransaction.replace(R.id.fragmentsAdmProf, fragment)
         fragmentTransaction.commit()
     }
 

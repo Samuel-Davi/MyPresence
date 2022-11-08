@@ -22,8 +22,8 @@ class TelaLoginAluno : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db:FirebaseFirestore
     private lateinit var spinner: Spinner
-    private lateinit var instituicoes:ArrayList<String>
-    lateinit var instituicaoSelecionada:String
+    private var instituicoes: ArrayList<String>? = null
+    lateinit var institutionSelection:String
     private lateinit var progressDialog:ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +33,25 @@ class TelaLoginAluno : AppCompatActivity() {
 
 
         db = FirebaseFirestore.getInstance()
-        getInstituicao()
+//        getInstituicao()
         auth = Firebase.auth
 
+        val data = intent.extras
+        instituicoes = data?.getStringArrayList("inst") as ArrayList<String>
+
         spinner = binding.spinnerInstTelaALuno
+
+        spinner.adapter = ArrayAdapter(this, R.layout.simple_spinner_dropdown_item, instituicoes!!)
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                institutionSelection = instituicoes!![position]
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
 
         with(binding){
             txtEsqSenha.setOnClickListener {
@@ -62,7 +77,7 @@ class TelaLoginAluno : AppCompatActivity() {
                     progressDialog.setMessage("Carregando...")
                     progressDialog.setCancelable(false)
                     progressDialog.show()
-                    validaLogin(textEmailAluno.text.toString(), textPassword.text.toString(), instituicaoSelecionada)
+                    validaLogin(textEmailAluno.text.toString(), textPassword.text.toString(), institutionSelection)
                 }else{
                     Toast.makeText(this@TelaLoginAluno, "Preencha os campos", Toast.LENGTH_LONG).show()
                 }
@@ -72,28 +87,18 @@ class TelaLoginAluno : AppCompatActivity() {
         }
     }
 
-    private fun getInstituicao(){
-        db.collection("Adm").get()
-            .addOnSuccessListener { documents->
-                instituicoes = ArrayList()
-                for(document in documents) {
-                    var nomeInst = document.get("instituicao").toString()
-                    instituicoes.add(nomeInst)
-                }
-                Log.d("TAG", instituicoes[0])
-                spinner.adapter = ArrayAdapter(this, R.layout.simple_spinner_dropdown_item, instituicoes)
-                spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                        instituicaoSelecionada = instituicoes[position]
-                    }
-
-                    override fun onNothingSelected(p0: AdapterView<*>?) {
-                        TODO("Not yet implemented")
-                    }
-
-                }
-            }
-    }
+//    private fun getInstituicao(){
+//        db.collection("Adm").get()
+//            .addOnSuccessListener { documents->
+//                instituicoes = ArrayList()
+//                for(document in documents) {
+//                    var nomeInst = document.get("instituicao").toString()
+//                    instituicoes.add(nomeInst)
+//                }
+//                Log.d("TAG", instituicoes[0])
+//
+//            }
+//    }
 
     private fun validaLogin(email:String, senha:String, inst:String){
         db = FirebaseFirestore.getInstance()

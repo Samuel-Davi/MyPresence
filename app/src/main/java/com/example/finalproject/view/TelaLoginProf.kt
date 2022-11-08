@@ -27,14 +27,28 @@ class TelaLoginProf : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = FirebaseFirestore.getInstance()
-        getInstituicao()
+//        getInstituicao()
         auth = FirebaseAuth.getInstance()
         val binding = ActivityTelaLoginProfBinding.inflate(layoutInflater);
         setContentView(binding.root)
 
+        val data = intent.extras
+        instituicoes = data?.getStringArrayList("inst") as ArrayList<String>
+
         var estados = arrayOf("amazonas", "sao paulo", "santa catarina")
 
         spinner = findViewById(R.id.spinnerInst)
+        spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, instituicoes)
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                instituicaoSelecionada = instituicoes[position]
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
 
         binding.txtEsqSenha.setOnClickListener {
             if(binding.textEmail.text.isEmpty()){
@@ -68,28 +82,18 @@ class TelaLoginProf : AppCompatActivity() {
         }
     }
 
-    private fun getInstituicao(){
-        db.collection("Adm").get()
-            .addOnSuccessListener { documents->
-                instituicoes = ArrayList()
-                for(document in documents) {
-                    var nomeInst = document.get("instituicao").toString()
-                    instituicoes.add(nomeInst)
-                }
-                Log.d("TAG", instituicoes[0])
-                spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, instituicoes)
-                spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                        instituicaoSelecionada = instituicoes[position]
-                    }
-
-                    override fun onNothingSelected(p0: AdapterView<*>?) {
-                        TODO("Not yet implemented")
-                    }
-
-                }
-            }
-    }
+//    private fun getInstituicao(){
+//        db.collection("Adm").get()
+//            .addOnSuccessListener { documents->
+//                instituicoes = ArrayList()
+//                for(document in documents) {
+//                    var nomeInst = document.get("instituicao").toString()
+//                    instituicoes.add(nomeInst)
+//                }
+//                Log.d("TAG", instituicoes[0])
+//
+//            }
+//    }
 
     private fun validaLogin(email:String, senha:String){
         auth.signInWithEmailAndPassword(email,senha)

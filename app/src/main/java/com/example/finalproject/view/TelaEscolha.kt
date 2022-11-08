@@ -1,15 +1,25 @@
 package com.example.finalproject.view
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.finalproject.R
 import com.example.finalproject.model.BotaoConfirmado
 import com.example.finalproject.databinding.ActivityTelaEscolhaBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class TelaEscolha : AppCompatActivity() {
+
+    private lateinit var instituicoes:ArrayList<String>
+    private lateinit var db:FirebaseFirestore
+    private lateinit var progressDialog:ProgressDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityTelaEscolhaBinding.inflate(layoutInflater)
@@ -67,14 +77,56 @@ class TelaEscolha : AppCompatActivity() {
 
         binding.btProx.setOnClickListener {
             if(btConfirm.valorConfirm == 1){
-                startActivity(Intent(this, TelaLoginAluno::class.java))
+                progressDialog = ProgressDialog(this)
+                progressDialog.setMessage("Carregando as instituições...")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
+                getInstituicoesAluno()
             }else if(btConfirm.valorConfirm == 2) {
-                startActivity(Intent(this, TelaLoginProf::class.java))
+                progressDialog = ProgressDialog(this)
+                progressDialog.setMessage("Carregando as instituições...")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
+                getInstituicoesProf()
             }else if(btConfirm.valorConfirm == 3){
                 startActivity(Intent(this, TelaLoginAdm::class.java))
             }else{
                 Toast.makeText(this, "Por favor, selecione uma das opções para continuar", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun getInstituicoesProf() {
+        db = FirebaseFirestore.getInstance()
+        db.collection("Adm").get()
+            .addOnSuccessListener { documents->
+                instituicoes = ArrayList()
+                for (document in documents){
+                    var nomeInst = document.get("instituicao").toString()
+                    instituicoes.add(nomeInst)
+                    Log.d("MYLOG", "pegou")
+                    if (progressDialog.isShowing) progressDialog.dismiss()
+                    val intent = Intent(this, TelaLoginProf::class.java)
+                    intent.putExtra("inst", instituicoes)
+                    startActivity(intent)
+                }
+            }
+    }
+
+    private fun getInstituicoesAluno() {
+        db = FirebaseFirestore.getInstance()
+        db.collection("Adm").get()
+            .addOnSuccessListener { documents->
+                instituicoes = ArrayList()
+                for (document in documents){
+                    var nomeInst = document.get("instituicao").toString()
+                    instituicoes.add(nomeInst)
+                    Log.d("MYLOG", "pegou")
+                    if (progressDialog.isShowing) progressDialog.dismiss()
+                    val intent = Intent(this, TelaLoginAluno::class.java)
+                    intent.putExtra("inst", instituicoes)
+                    startActivity(intent)
+                }
+            }
     }
 }

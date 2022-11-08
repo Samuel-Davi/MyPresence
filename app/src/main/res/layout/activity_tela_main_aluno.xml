@@ -12,74 +12,15 @@
         android:background="@color/cinza_claro"
         tools:context=".view.TelaMainAluno">
 
-        <ImageView
-            android:id="@+id/imageView14"
+
+        <FrameLayout
+            android:id="@+id/fragmentsAluno"
             android:layout_width="match_parent"
-            android:layout_height="270dp"
-            android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/fundoadmtop" />
-
-        <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/headerbluewhite" />
-
-        <TextView
-            android:id="@+id/txtOla"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/montserrat_alternates_bold"
-            android:text="Olá, Samuel"
-            android:textColor="@color/cinza_claro"
-            android:textSize="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.857"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView11" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgAlunoMain"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toStartOf="@+id/txtOla"
-            app:layout_constraintHorizontal_bias="0.507"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView11"
-            android:src="@drawable/usuarioicon" />
-
-        <TextView
-            android:id="@+id/txtTurma"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/montserrat_alternates_bold"
-            android:text="Disciplinas"
-            android:textColor="@color/azulescuro"
-            android:textSize="28dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.124"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView14" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewDisciplinas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTurma">
-
-
-        </androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout8"
@@ -111,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="@+id/imageView18">
 
             <ImageView
-                android:id="@+id/imgHome"
+                android:id="@+id/imgHomeAluno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -133,7 +74,7 @@
                 app:srcCompat="@drawable/imgcamera" />
 
             <ImageView
-                android:id="@+id/imgAccount"
+                android:id="@+id/imgAccountAluno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -142,21 +83,6 @@
                 app:layout_constraintTop_toTopOf="@+id/imageView18"
                 app:srcCompat="@drawable/imgaccountdes" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/txtDisciplina"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/alata"
-            android:text="Turma:"
-            android:textColor="@color/cinza_claro"
-            android:textSize="18dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView14"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.3"
-            app:layout_constraintStart_toEndOf="@+id/imgAlunoMain"
-            app:layout_constraintTop_toBottomOf="@+id/txtOla"
-            app:layout_constraintVertical_bias="0.299" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -1,28 +1,22 @@
 package com.example.finalproject.view
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
 import com.example.finalproject.databinding.ActivityTelaMainAlunoBinding
 import com.example.finalproject.fragment.*
 import com.example.finalproject.model.Disciplina
-import com.example.finalproject.model.Prof
 import com.example.finalproject.opencv.OpenCVTeste
-import com.example.finalproject.recycler.DisciplinaAdapter
-import com.example.finalproject.recycler.ProfAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
-class TelaMainAluno : AppCompatActivity() {
+class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
 
     private lateinit var recyclerViewDisciplinas: RecyclerView
     private lateinit var newArrayListDisc:ArrayList<Disciplina>
@@ -39,6 +33,12 @@ class TelaMainAluno : AppCompatActivity() {
 
     private var storageRef = FirebaseStorage.getInstance().reference
 
+    private lateinit var imgHome:ImageView
+    private lateinit var imgAccount:ImageView
+
+    private lateinit var homeFragment:FragmentHomeAluno
+    private lateinit var accountFragment: FragmentAccountAluno
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityTelaMainAlunoBinding.inflate(layoutInflater)
@@ -54,34 +54,23 @@ class TelaMainAluno : AppCompatActivity() {
 
 //        dataInitialize(inst.toString())
 
-        val layoutManager = LinearLayoutManager(this@TelaMainAluno)
-        recyclerViewDisciplinas = findViewById(R.id.recyclerViewDisciplinas)
-        recyclerViewDisciplinas.layoutManager = layoutManager
-        recyclerViewDisciplinas.setHasFixedSize(true)
+        imgHome = findViewById(R.id.imgHomeAluno)
+        imgHome.setOnClickListener(this)
 
-        val localFile = File.createTempFile("tempImage", "png")
-        storageRef.child("Adm/$inst/alunos/$ra/$ra.png").getFile(localFile)
-            .addOnSuccessListener {
-                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                Log.d("TAG", bitmap.toString())
-                binding.imgAlunoMain.setImageBitmap(bitmap)
-            }.addOnFailureListener{
-                Log.e("TAG", it.message.toString())
-            }
+        imgAccount = findViewById(R.id.imgAccountAluno)
+        imgAccount.setOnClickListener(this)
+
+        homeFragment = FragmentHomeAluno()
+        accountFragment = FragmentAccountAluno()
+
+        addFragment(homeFragment)
+
 
         with(binding){
-            txtOla.text = "Olá, $nome"
-            txtDisciplina.text = "Turma: $turma"
-
             imgAccount.setOnClickListener {
-                val intent = Intent(this@TelaMainAluno, TelaOpcAluno::class.java)
-                intent.putExtra("nome", nome)
-                intent.putExtra("sob", sob)
-                intent.putExtra("turma", turma)
-                intent.putExtra("email", email)
-                intent.putExtra("ra", ra)
-                intent.putExtra("inst", inst)
-                startActivity(intent);
+                replaceFragment(accountFragment)
+                imgHomeAluno.setImageDrawable(getDrawable(R.drawable.imghomedes))
+                imgAccountAluno.setImageDrawable(getDrawable(R.drawable.imguserbox))
             }
             imgIniciaRF.setOnClickListener {
                 val intent = Intent(this@TelaMainAluno, OpenCVTeste::class.java)
@@ -94,55 +83,28 @@ class TelaMainAluno : AppCompatActivity() {
                 intent.putExtra("inst", inst)
                 startActivity(intent)
             }
-        }
-    }
-
-    private fun dataInitialize(inst:String){
-        textNomeListDisc = ArrayList()
-        textProfNomeList = ArrayList()
-        cursosList = ArrayList()
-        seriesList = ArrayList()
-        db = FirebaseFirestore.getInstance()
-        db.collection("Adm").document(inst).collection("Disciplinas")
-            .get().addOnSuccessListener {documents->
-                if(documents.isEmpty){
-                    val txt = findViewById<TextView>(R.id.txtAdmProf)
-                    val img = findViewById<ImageView>(R.id.imgAdmProf)
-                }else {
-                    for (document in documents) {
-                        var nome = document.get("nome").toString()
-                        var nomeProf = document.get("nomeProf").toString()
-                        var cursosBanco = document.get("cursos").toString()
-                        var seriesBanco = document.get("séries").toString()
-                        Log.d("TAG", nome)
-                        textNomeListDisc.add(nome)
-                        textProfNomeList.add(nomeProf)
-                        cursosList.add(cursosBanco)
-                        seriesList.add(seriesBanco)
-//                        Log.d("TAG12", textNomeListDisc[1] + textProfNomeList[1])
-
-                        textNomeDisc = textNomeListDisc.toTypedArray()
-                        textProfNome = textProfNomeList.toTypedArray()
-                        cursos = cursosList.toTypedArray()
-                        series = seriesList.toTypedArray()
-//                        Log.d("TAG", textNomeDisc[0] + " " + textNomeDisc[1])
-
-                        newArrayListDisc = arrayListOf<Disciplina>()
-                        getUserData()
-                    }
-                }
-            }.addOnFailureListener { exception->
-                Log.w("TAG", "Error getting documents: ", exception)
+            imgHomeAluno.setOnClickListener {
+                replaceFragment(homeFragment)
+                imgAccountAluno.setImageDrawable(getDrawable(R.drawable.imgaccountdes))
+                imgHomeAluno.setImageDrawable(getDrawable(R.drawable.imghome))
             }
-    }
-
-    private fun getUserData(){
-        for(i in textNomeDisc.indices){
-            val disciplina = Disciplina(cursos[i], textNomeDisc[i], series[i], textProfNome[i])
-            newArrayListDisc.add(disciplina)
-            Log.d("TelaMainAlunoTeste", newArrayListDisc[i].toString())
         }
-
-        recyclerViewDisciplinas.adapter = DisciplinaAdapter(newArrayListDisc)
     }
+
+    private fun addFragment(fragment: Fragment){
+        val fragmentTransaction = supportFragmentManager.beginTransaction().add(R.id.fragmentsAluno, fragment)
+        fragmentTransaction.commit()
+    }
+
+    private fun replaceFragment(fragment: Fragment){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentsAluno, fragment)
+        fragmentTransaction.commit()
+    }
+
+    override fun onClick(p0: View?) {
+        TODO("Not yet implemented")
+    }
+
+
 }

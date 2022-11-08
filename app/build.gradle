@@ -16,7 +16,7 @@ android {
         applicationId "com.example.finalproject"
         minSdk 24
         targetSdk 32
-        minSdk 21
+        minSdk 24
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -70,14 +70,14 @@ dependencies {
 
     //tensowFlow
 //    implementation 'org.tensorflow:tensorflow-lite-task-vision-play-services:0.4.2'
-    implementation 'org.tensorflow:tensorflow-lite-task-vision:0.1.0'
+//    implementation 'org.tensorflow:tensorflow-lite-task-vision:0.1.0'
     // Import the GPU delegate plugin Library for GPU inference
-    implementation 'org.tensorflow:tensorflow-lite-gpu:2.2.0'
+//    implementation 'org.tensorflow:tensorflow-lite-gpu:2.2.0'
 //    implementation 'org.tensorflow:tensorflow-lite-task-text:0.1.0'
 //    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0-rc1'
 //    implementation 'org.tensorflow:tensorflow-lite-support:'
 //    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
-    implementation 'org.tensorflow:tensorflow-lite:0.4.2'
+//    implementation 'org.tensorflow:tensorflow-lite:0.4.2'
 
 
     testImplementation 'junit:junit:4.13.2'
@@ -121,4 +121,15 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     //camerakit
 //    implementation 'com.wonderkiln.camerakit:0.13.1'
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '25.3.0'
+            }
+        }
+    }
 }

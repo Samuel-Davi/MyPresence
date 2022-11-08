@@ -11,6 +11,11 @@
     <string name="txtonboarding1">Basta apontar a câmera para o seu rosto por alguns segundos e a sua presença será confirmada.</string>
     <string name="txtonboarding2">Agora ficou muito mais fácil de guardar a presença dos alunos! Lista gerada automaticamente :)</string>
     <string name="txtonboarding3">Visualize sua lista de turmas ou de disciplinas e fique por dentro das faltas ou presenças registradas em cada uma.</string>
+    <string name="opencv_demo">OpenCV Camera\nDemo</string>
+    <string name="n_90_degree">90</string>
+    <string name="n_180_degree">180</string>
+    <string name="n_270_degree">270</string>
+    <string name="n_0_degree">0</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

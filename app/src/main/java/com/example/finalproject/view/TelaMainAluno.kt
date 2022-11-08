@@ -15,6 +15,7 @@ import com.example.finalproject.databinding.ActivityTelaMainAlunoBinding
 import com.example.finalproject.fragment.*
 import com.example.finalproject.model.Disciplina
 import com.example.finalproject.model.Prof
+import com.example.finalproject.opencv.OpenCVTeste
 import com.example.finalproject.recycler.DisciplinaAdapter
 import com.example.finalproject.recycler.ProfAdapter
 import com.google.firebase.firestore.FirebaseFirestore
@@ -83,7 +84,7 @@ class TelaMainAluno : AppCompatActivity() {
                 startActivity(intent);
             }
             imgIniciaRF.setOnClickListener {
-                val intent = Intent(this@TelaMainAluno, TelaCamera::class.java)
+                val intent = Intent(this@TelaMainAluno, OpenCVTeste::class.java)
                 intent.putExtra("nome", nome)
                 intent.putExtra("sob", sob)
                 intent.putExtra("turma", turma)

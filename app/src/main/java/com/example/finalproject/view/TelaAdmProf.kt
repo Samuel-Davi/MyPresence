@@ -20,6 +20,7 @@ import com.example.finalproject.fragment.AdmHomeFragment
 import com.example.finalproject.model.Prof
 import com.example.finalproject.R
 import com.google.firebase.firestore.*
+import org.opencv.android.OpenCVLoader
 
 
 class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
@@ -45,7 +46,6 @@ class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
         db = FirebaseFirestore.getInstance()
-
 
         imgHome = findViewById(R.id.imgHome)
         imgHome.setOnClickListener(this)

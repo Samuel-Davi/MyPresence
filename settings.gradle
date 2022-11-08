@@ -14,3 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "FinalProject"
 include ':app'
+
+//def opencvsdk = 'C:/Users/samue/OneDrive/Área de Trabalho/Fundação/Projeto/OpenCV/3.4.10/opencv-3.4.10-android-sdk/OpenCV-android-sdk'
+//include ':OpenCV3-4-10'
+//project(':OpenCV3-4-10').projectDir = new File(opencvsdk + '/sdk')
+include ':OpenCV3410'

@@ -85,6 +85,7 @@ class TelaMainAluno : AppCompatActivity() {
             }
             imgIniciaRF.setOnClickListener {
                 val intent = Intent(this@TelaMainAluno, OpenCVTeste::class.java)
+//                val intent = Intent(this@TelaMainAluno, TelaCamera::class.java)
                 intent.putExtra("nome", nome)
                 intent.putExtra("sob", sob)
                 intent.putExtra("turma", turma)

@@ -8,6 +8,7 @@
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/buttonstyle.xml" value="0.1865" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/editlink.xml" value="0.1695" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/edittextstyle.xml" value="0.25" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.231" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.17" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2155" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/img_accountblue.xml" value="0.231" />
@@ -26,6 +27,7 @@
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/layoutimages.xml" value="0.1835" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/linear_style.xml" value="0.1695" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/logo_background.xml" value="0.1865" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/style_box_rf.xml" value="0.188" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/textlink.xml" value="0.25" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/usuarioicon.xml" value="0.1695" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/font/.xml" value="0.2546875" />
@@ -69,14 +71,17 @@
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_account_aluno.xml" value="0.21" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_adm_account.xml" value="0.21" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_adm_home.xml" value="0.17" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_camera.xml" value="0.1362179487179487" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_home_aluno.xml" value="0.19" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_on_boarding1.xml" value="0.18" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_on_boarding2.xml" value="0.18" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_on_boarding3.xml" value="0.22" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_prof_account.xml" value="0.14326923076923076" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_prof_home.xml" value="0.14326923076923076" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_prof_account.xml" value="0.21" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_prof_home.xml" value="0.21" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_profs.xml" value="0.17" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_turmas.xml" value="0.14326923076923076" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/layout/turmascard_layout.xml" value="0.22" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/menu/navigation_items_aluno.xml" value="0.21044921875" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1865" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1865" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FinalProject/app/src/main/res/mipmap-anydpi-v26/logo.xml" value="0.1865" />

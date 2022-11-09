@@ -66,7 +66,7 @@ class TelaEditFotoAluno : AppCompatActivity() {
                 selectImage()
             }
             linearSairTelaOpcAluno.setOnClickListener {
-                val intent = Intent(this@TelaEditFotoAluno, TelaOpcAluno::class.java)
+                val intent = Intent(this@TelaEditFotoAluno, TelaMainAluno::class.java)
                 intent.putExtra("email", email)
                 intent.putExtra("senha", senha)
                 intent.putExtra("nome", nome)

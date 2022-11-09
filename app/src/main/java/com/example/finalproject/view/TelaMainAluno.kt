@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
 import com.example.finalproject.databinding.ActivityTelaMainAlunoBinding
@@ -35,13 +38,19 @@ class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
 
     private lateinit var imgHome:ImageView
     private lateinit var imgAccount:ImageView
+    private lateinit var imgCamera:ImageView
 
     private lateinit var homeFragment:FragmentHomeAluno
     private lateinit var accountFragment: FragmentAccountAluno
 
+    private lateinit var binding:ActivityTelaMainAlunoBinding
+
+    private lateinit var navHostFragment:NavHostFragment
+    private lateinit var navController:NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityTelaMainAlunoBinding.inflate(layoutInflater)
+        binding = ActivityTelaMainAlunoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val data = intent.extras
@@ -54,11 +63,16 @@ class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
 
 //        dataInitialize(inst.toString())
 
+
+        imgCamera = findViewById(R.id.imgIniciaRF)
+
         imgHome = findViewById(R.id.imgHomeAluno)
         imgHome.setOnClickListener(this)
 
         imgAccount = findViewById(R.id.imgAccountAluno)
         imgAccount.setOnClickListener(this)
+
+//        initNavigation()
 
         homeFragment = FragmentHomeAluno()
         accountFragment = FragmentAccountAluno()
@@ -69,12 +83,11 @@ class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
         with(binding){
             imgAccount.setOnClickListener {
                 replaceFragment(accountFragment)
-                imgHomeAluno.setImageDrawable(getDrawable(R.drawable.imghomedes))
-                imgAccountAluno.setImageDrawable(getDrawable(R.drawable.imguserbox))
+                imgHome.setImageDrawable(getDrawable(R.drawable.imghomedes))
+                imgAccount.setImageDrawable(getDrawable(R.drawable.imguserbox))
             }
-            imgIniciaRF.setOnClickListener {
+            imgCamera.setOnClickListener {
                 val intent = Intent(this@TelaMainAluno, OpenCVTeste::class.java)
-//                val intent = Intent(this@TelaMainAluno, TelaCamera::class.java)
                 intent.putExtra("nome", nome)
                 intent.putExtra("sob", sob)
                 intent.putExtra("turma", turma)
@@ -83,10 +96,10 @@ class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
                 intent.putExtra("inst", inst)
                 startActivity(intent)
             }
-            imgHomeAluno.setOnClickListener {
+            imgHome.setOnClickListener {
                 replaceFragment(homeFragment)
-                imgAccountAluno.setImageDrawable(getDrawable(R.drawable.imgaccountdes))
-                imgHomeAluno.setImageDrawable(getDrawable(R.drawable.imghome))
+                imgAccount.setImageDrawable(getDrawable(R.drawable.imgaccountdes))
+                imgHome.setImageDrawable(getDrawable(R.drawable.imghome))
             }
         }
     }
@@ -105,6 +118,14 @@ class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
     override fun onClick(p0: View?) {
         TODO("Not yet implemented")
     }
+
+//    private fun initNavigation(){
+//        navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentsAluno) as NavHostFragment
+//
+//        navController = navHostFragment.navController
+//
+//        NavigationUI.setupWithNavController(binding.bottomNavigationAlunos, navController)
+//    }
 
 
 }

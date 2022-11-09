@@ -7,7 +7,7 @@
     tools:context=".opencv.OpenCVTeste">
 
     <org.opencv.android.JavaCamera2View
-        android:id="@+id/cameraView"
+        android:id="@+id/cameraViewTeste"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,7 +17,7 @@
         app:show_fps="true" />
 
     <TextView
-        android:id="@+id/rotation_tv"
+        android:id="@+id/rotation_tvTeste"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

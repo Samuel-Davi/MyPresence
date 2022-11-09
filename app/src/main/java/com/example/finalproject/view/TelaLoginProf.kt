@@ -122,6 +122,7 @@ class TelaLoginProf : AppCompatActivity() {
                             Log.d("TAG", "get failed with ", exception)
                         }
                 }else{
+                    if (progressDialog.isShowing) progressDialog.dismiss()
                     Toast.makeText(this, "Email ou senha incorretos", Toast.LENGTH_LONG).show()
                 }
             }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_home"
+        android:icon="@drawable/imghome"
+        android:title="Home" />
+
+    <item android:id="@+id/action_camera"
+        android:title="Câmera"
+        android:icon="@drawable/imgcamera" />
+
+    <item android:id="@+id/action_account"
+        android:title="Account"
+        android:icon="@drawable/imgaccountdes" />
+</menu>

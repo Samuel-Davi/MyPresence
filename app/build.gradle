@@ -67,6 +67,8 @@ dependencies {
 
     //openCV
     implementation project(path: ':OpenCV3410')
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
 
     //tensowFlow
 //    implementation 'org.tensorflow:tensorflow-lite-task-vision-play-services:0.4.2'

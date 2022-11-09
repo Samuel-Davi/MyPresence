@@ -1,62 +1,58 @@
-package com.example.finalproject.opencv;
+package com.example.finalproject.fragment
 
-import android.Manifest;
-import android.Manifest.permission.*;
+import android.Manifest
 import android.app.ProgressDialog
-import android.content.Context;
-import android.content.Intent
-import android.content.pm.PackageManager;
-import android.hardware.camera2.CameraCharacteristics;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.OrientationEventListener;
-import android.view.SurfaceView;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams.*;
-import android.widget.Toast;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import com.example.finalproject.R;
-import com.example.finalproject.view.TelaMainAluno
+import android.content.Context
+import android.content.pm.PackageManager
+import android.hardware.camera2.CameraCharacteristics
+import android.os.Bundle
+import android.util.Log
+import android.view.*
+import androidx.fragment.app.Fragment
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.example.finalproject.R
+import com.example.finalproject.opencv.OpenCVTeste
 import kotlinx.android.synthetic.main.activity_open_cvteste.*
-import org.opencv.android.*;
-import org.opencv.core.*;
-import org.opencv.core.Core.*;
-import org.opencv.imgproc.Imgproc;
-import org.opencv.imgproc.Imgproc.resize
-import org.opencv.objdetect.CascadeClassifier;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import kotlinx.android.synthetic.main.fragment_camera.*
+import org.opencv.android.BaseLoaderCallback
+import org.opencv.android.CameraBridgeViewBase
+import org.opencv.android.OpenCVLoader
+import org.opencv.core.*
+import org.opencv.imgproc.Imgproc
+import org.opencv.objdetect.CascadeClassifier
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 import java.util.*
 import kotlin.concurrent.schedule
 
-private const val REQUEST_CODE_PERMISSIONS = 111
-private val REQUIRED_PERMISSIONS = arrayOf(
-    CAMERA,
-    WRITE_EXTERNAL_STORAGE,
-    READ_EXTERNAL_STORAGE,
-    RECORD_AUDIO,
-    ACCESS_FINE_LOCATION
+private const val REQUEST_CODE_PERMISSIONS_ = 111
+private val REQUIRED_PERMISSIONS_ = arrayOf(
+    Manifest.permission.CAMERA,
+    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+    Manifest.permission.READ_EXTERNAL_STORAGE,
+    Manifest.permission.RECORD_AUDIO,
+    Manifest.permission.ACCESS_FINE_LOCATION
 )
 
-class OpenCVTeste : AppCompatActivity(), CameraBridgeViewBase.CvCameraViewListener2{
+class FragmentCamera : Fragment(), CameraBridgeViewBase.CvCameraViewListener2 {
 
-    //view
-    private lateinit var viewFinder:CameraBridgeViewBase
+    private lateinit var viewFinder: CameraBridgeViewBase
+
+    //fragment
+    private lateinit var homeFragment:FragmentHomeAluno
 
     //openCV callback
-    lateinit var cvBaseLoaderCallback:BaseLoaderCallback
+    lateinit var cvBaseLoaderCallback: BaseLoaderCallback
 
     //image storage
     lateinit var imageMat: Mat
     lateinit var grayMat: Mat
 
-    //progressdialog
+    //progressDialog
     private lateinit var progressDialog:ProgressDialog
 
     //face library
@@ -77,7 +73,7 @@ class OpenCVTeste : AppCompatActivity(), CameraBridgeViewBase.CvCameraViewListen
         fun lgi(s: String) = Log.i(TAG, s)
 
         fun shortMsg(context: Context, s: String) =
-        Toast.makeText(context, s, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, s, Toast.LENGTH_SHORT).show()
 
         // messages:
         private const val OPENCV_SUCCESSFUL = "OpenCV Loaded Successfully!"
@@ -112,7 +108,7 @@ class OpenCVTeste : AppCompatActivity(), CameraBridgeViewBase.CvCameraViewListen
         try {
             val modelInputStream = resources.openRawResource(R.raw.haarcascade_frontalface_alt2)
 
-            faceDir = getDir(FACE_DIR, Context.MODE_PRIVATE)
+            faceDir = activity?.getDir(FACE_DIR, Context.MODE_PRIVATE)!!
 
             val faceModel = File(faceDir, FACE_MODEL)
 
@@ -136,45 +132,43 @@ class OpenCVTeste : AppCompatActivity(), CameraBridgeViewBase.CvCameraViewListen
         }
     }
 
-    private lateinit var nome:String
-    private lateinit var turma:String
-    private lateinit var sob:String
-    private lateinit var ra:String
-    private lateinit var email:String
-    private lateinit var inst:String
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.clearFlags(FLAG_FORCE_NOT_FULLSCREEN)
-        window.setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN)
-        window.addFlags(FLAG_KEEP_SCREEN_ON)
-        setContentView(R.layout.activity_open_cvteste)
+    }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-        val data = intent.extras
-        nome = data?.getString("nome").toString()
-        turma = data?.getString("turma").toString()
-         sob = data?.getString("sob").toString()
-         ra = data?.getString("ra").toString()
-         email = data?.getString("email").toString()
-         inst = data?.getString("inst").toString()
+        val view = inflater.inflate(R.layout.fragment_camera, container, false)
 
-        if (allPermissionsGranted()) {
-            checkOpenCV(this)
-        } else {
-            ActivityCompat.requestPermissions(
-                    this,
-                    REQUIRED_PERMISSIONS,
-                    REQUEST_CODE_PERMISSIONS )
-        }
+        homeFragment = FragmentHomeAluno()
 
-        cvBaseLoaderCallback = object : BaseLoaderCallback(this) {
+        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN)
+        activity?.window?.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
+//        if (allPermissionsGranted()) {
+//            checkOpenCV(requireActivity())
+//        } else {
+//            ActivityCompat.requestPermissions(
+//                requireActivity(),
+//                REQUIRED_PERMISSIONS_,
+//                REQUEST_CODE_PERMISSIONS_
+//            )
+//        }
+
+        cvBaseLoaderCallback = object : BaseLoaderCallback(activity) {
             override fun onManagerConnected(status: Int) {
 
                 when (status) {
                     SUCCESS -> {
-                        lgi(OPENCV_SUCCESSFUL)
-                        shortMsg(this@OpenCVTeste, OPENCV_SUCCESSFUL)
+                        OpenCVTeste.lgi(OPENCV_SUCCESSFUL)
+                        OpenCVTeste.shortMsg(activity!!, OPENCV_SUCCESSFUL)
 
                         loadFaceLib()
                         if(faceDetector!!.empty()){
@@ -191,32 +185,32 @@ class OpenCVTeste : AppCompatActivity(), CameraBridgeViewBase.CvCameraViewListen
             }
         }
 
-        viewFinder = findViewById(R.id.cameraViewTeste)
+        viewFinder = view?.findViewById(R.id.cameraView)!!
         viewFinder.visibility = SurfaceView.VISIBLE
         viewFinder.setCameraIndex(
-                CameraCharacteristics.LENS_FACING_BACK)
+            CameraCharacteristics.LENS_FACING_BACK)
         viewFinder.setCvCameraViewListener(this)
 
 
 
-        val mOrientationEventListener =  object : OrientationEventListener(this) {
+        val mOrientationEventListener =  object : OrientationEventListener(activity) {
             override fun onOrientationChanged(orientation: Int) {
                 // Monitors orientation values to determine the target rotation value
                 when (orientation) {
                     in 45..134 -> {
-                        rotation_tvTeste.text = getString(R.string.n_270_degree)
+                        rotation_tv.text = getString(R.string.n_270_degree)
                         screenRotation = 270
                     }
                     in 135..224 -> {
-                        rotation_tvTeste.text = getString(R.string.n_180_degree)
+                        rotation_tv.text = getString(R.string.n_180_degree)
                         screenRotation = 180
                     }
                     in 225..314 -> {
-                        rotation_tvTeste.text = getString(R.string.n_90_degree)
+                        rotation_tv.text = getString(R.string.n_90_degree)
                         screenRotation = 90
                     }
                     else -> {
-                        rotation_tvTeste.text = getString(R.string.n_0_degree)
+                        rotation_tv.text = getString(R.string.n_0_degree)
                         screenRotation = 0
                     }
                 }
@@ -229,24 +223,26 @@ class OpenCVTeste : AppCompatActivity(), CameraBridgeViewBase.CvCameraViewListen
             mOrientationEventListener.disable();
         }
 
+        return view;
     }
 
     override fun onRequestPermissionsResult(
-            requestCode: Int, permissions: Array<String>, grantResults: IntArray
+        requestCode: Int, permissions: Array<String>, grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_CODE_PERMISSIONS) {
+        if (requestCode == REQUEST_CODE_PERMISSIONS_) {
             if (allPermissionsGranted()) {
-                checkOpenCV(this)
+                checkOpenCV(requireActivity())
             } else {
-                shortMsg(this, PERMISSION_NOT_GRANTED)
-                finish()
+                OpenCVTeste.shortMsg(requireActivity(), PERMISSION_NOT_GRANTED)
+                Log.e("MYLOG", "erro")
+//                activity?.finish()
             }
         }
     }
 
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS_.all {
+        ContextCompat.checkSelfPermission(requireContext(), it) == PackageManager.PERMISSION_GRANTED
     }
 
     override fun onPause() {
@@ -256,8 +252,8 @@ class OpenCVTeste : AppCompatActivity(), CameraBridgeViewBase.CvCameraViewListen
 
     override fun onResume() {
         super.onResume()
-        lgi("ta aq")
-        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION, this, cvBaseLoaderCallback)
+        OpenCVTeste.lgi("ta aq")
+        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION, activity, cvBaseLoaderCallback)
     }
 
     override fun onDestroy() {
@@ -295,16 +291,16 @@ class OpenCVTeste : AppCompatActivity(), CameraBridgeViewBase.CvCameraViewListen
 
         val dstSize = Size(imageSize.width*imageRatio, imageSize.height*imageRatio)
         val dst = Mat()
-        resize(src, dst, dstSize)
+        Imgproc.resize(src, dst, dstSize)
 
         when (screenRotation) {
             0-> {
-                rotate(dst, dst, ROTATE_90_CLOCKWISE)
-                flip(dst, dst, 1)
+                Core.rotate(dst, dst, Core.ROTATE_90_CLOCKWISE)
+                Core.flip(dst, dst, 1)
             }
             180-> {
-                rotate(dst, dst, ROTATE_90_COUNTERCLOCKWISE)
-                flip(dst, dst, 1)
+                Core.rotate(dst, dst, Core.ROTATE_90_COUNTERCLOCKWISE)
+                Core.flip(dst, dst, 1)
             }
         }
 
@@ -331,8 +327,8 @@ class OpenCVTeste : AppCompatActivity(), CameraBridgeViewBase.CvCameraViewListen
     private fun drawFaceRectangle() {
         val faceRects = MatOfRect()
         faceDetector!!.detectMultiScale(
-                grayMat,
-                faceRects)
+            grayMat,
+            faceRects)
 
         val scrW = imageMat.width().toDouble()
         val scrH = imageMat.height().toDouble()
@@ -367,8 +363,7 @@ class OpenCVTeste : AppCompatActivity(), CameraBridgeViewBase.CvCameraViewListen
                     drawDot(y, x, GREEN)
                 }
                 180-> {
-                    lgd("x: $x -- y: $y :: sW: $scrW, sH: $scrH")
-
+                    OpenCVTeste.lgd("x: $x -- y: $y :: sW: $scrW, sH: $scrH")
                     rectFace(y, x, h, w, RED)
                     drawDot(y, x, GREEN)
 
@@ -383,50 +378,44 @@ class OpenCVTeste : AppCompatActivity(), CameraBridgeViewBase.CvCameraViewListen
         }
     }
 
-    fun rectFace(x: Double, y: Double, w: Double, h: Double, color:Scalar) {
-        Imgproc.rectangle(
-                imageMat, // image
-                Point(x, y), // upper corner
-                Point(w, h),  // opposite corner
-                color  // RGB
-        )
-//        liberaCaixa()
-    }
-
-    fun drawDot(x: Double, y:Double, color:Scalar) {
-        Imgproc.circle(
-                imageMat, // image
-                Point(x, y),  // center
-                4, // radius
-                color, // RGB
-                -1, // thickness: -1 = filled in
-                8 // line type
-        )
-    }
     private fun liberaCaixa() {
-//        viewFinder.disableView()
+        viewFinder.disableView()
         Timer().schedule(2000){
-            onDestroy()
-            progressDialog = ProgressDialog(this@OpenCVTeste)
+            progressDialog = ProgressDialog(requireContext())
             progressDialog.setMessage("Carregando...")
             progressDialog.setCancelable(false)
             progressDialog.show()
         }
         Timer().schedule(5000){
             if (progressDialog.isShowing) progressDialog.dismiss()
-            val intent = Intent(this@OpenCVTeste, TelaMainAluno::class.java)
-            intent.putExtra("nome", nome)
-            intent.putExtra("sob", sob)
-            intent.putExtra("turma", turma)
-            intent.putExtra("email", email)
-            intent.putExtra("ra", ra)
-            intent.putExtra("inst", inst)
-//            startActivity(intent)
+            val fragmentTransaction = activity?.supportFragmentManager!!.beginTransaction()
+            fragmentTransaction.replace(R.id.fragmentsAluno, homeFragment)
+            fragmentTransaction.commit()
         }
 //        val boxRf:ConstraintLayout = activity?.findViewById(R.id.boxRfPositivo)!!
 //        boxRf.visibility = SurfaceView.VISIBLE
 
     }
 
+    fun rectFace(x: Double, y: Double, w: Double, h: Double, color:Scalar) {
+        Imgproc.rectangle(
+            imageMat, // image
+            Point(x, y), // upper corner
+            Point(w, h),  // opposite corner
+            color  // RGB
+        )
+//        liberaCaixa()
+    }
+
+    fun drawDot(x: Double, y:Double, color:Scalar) {
+        Imgproc.circle(
+            imageMat, // image
+            Point(x, y),  // center
+            4, // radius
+            color, // RGB
+            -1, // thickness: -1 = filled in
+            8 // line type
+        )
+    }
 
 }

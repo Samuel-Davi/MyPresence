@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_account_aluno.*
 import java.io.File
 
 class FragmentAccountAluno : Fragment() {
+
     private lateinit var db: FirebaseFirestore
     private var storageRef = FirebaseStorage.getInstance().reference
 
@@ -31,6 +32,8 @@ class FragmentAccountAluno : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val view = inflater.inflate(R.layout.fragment_account_aluno, container, false)
+
         db = FirebaseFirestore.getInstance()
 
         val data = activity?.intent?.extras
@@ -40,6 +43,8 @@ class FragmentAccountAluno : Fragment() {
         val nome = data?.getString("nome")
         val sob = data?.getString("sob")
         val inst = data?.getString("inst")
+
+        val imgEditTelaOpc:ImageView = view?.findViewById(R.id.imgEditTelaOpc)!!
 
         val localFile = File.createTempFile("tempImage", "png")
         storageRef.child("Adm/$inst/alunos/$ra/$ra.png").getFile(localFile)
@@ -69,7 +74,7 @@ class FragmentAccountAluno : Fragment() {
             startActivity(intent)
         }
 
-        return inflater.inflate(R.layout.fragment_account_aluno, container, false)
+        return view;
     }
 
 

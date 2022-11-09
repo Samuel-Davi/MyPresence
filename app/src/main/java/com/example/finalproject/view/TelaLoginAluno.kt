@@ -77,7 +77,8 @@ class TelaLoginAluno : AppCompatActivity() {
                     progressDialog.setMessage("Carregando...")
                     progressDialog.setCancelable(false)
                     progressDialog.show()
-                    validaLogin(textEmailAluno.text.toString(), textPassword.text.toString(), institutionSelection)
+                    validaLogin(textEmailAluno.text.toString(), textPassword.text.toString(),
+                        institutionSelection)
                 }else{
                     Toast.makeText(this@TelaLoginAluno, "Preencha os campos", Toast.LENGTH_LONG).show()
                 }

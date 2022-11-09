@@ -8,10 +8,13 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.SurfaceView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import com.example.finalproject.R
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
@@ -75,6 +78,14 @@ class AdmHomeFragment : Fragment() {
         turmasFragment = FragmentTurmas()
 
         addFragment(profsFragment)
+
+//        val btCancel:ImageView = view.findViewById(R.id.btCancel)
+//        val constraintLayout:ConstraintLayout = view.findViewById(R.id.boxRfPositivo)
+//        if(constraintLayout.isVisible){
+//            btCancel.setOnClickListener {
+//                constraintLayout.visibility = SurfaceView.INVISIBLE
+//            }
+//        }
 
         buttonProfs?.setOnClickListener {
             replaceFragment(profsFragment)

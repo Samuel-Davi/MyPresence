@@ -29,7 +29,7 @@ import java.io.File
 import java.net.URI
 
 
-class AdmAccountFragment : Fragment() {
+class FragmentAdmAccount : Fragment() {
 
     private lateinit var db:FirebaseFirestore
     val storageRef = FirebaseStorage.getInstance().reference

@@ -8,16 +8,25 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.finalproject.R
 import com.example.finalproject.databinding.ActivityTelaMainProfessorBinding
+import com.example.finalproject.fragment.FragmentProfHabilita
 import com.example.finalproject.fragment.ProfAccountFragment
 import com.example.finalproject.fragment.ProfHomeFragment
 
 class TelaMainProfessor : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var imgHome: ImageView
+    private lateinit var imgHabilita:ImageView
     private lateinit var imgAccount: ImageView
 
     private lateinit var homeFragment: ProfHomeFragment
+    private lateinit var habilitaFragment:FragmentProfHabilita
     private lateinit var accountFragment: ProfAccountFragment
+
+    private lateinit var nome:String
+    private lateinit var sob:String
+    private lateinit var disciplina:String
+    private lateinit var email:String
+    private lateinit var inst:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +39,11 @@ class TelaMainProfessor : AppCompatActivity(), View.OnClickListener {
         imgAccount = findViewById(R.id.imgAccountProf)
         imgAccount.setOnClickListener(this)
 
+        imgHabilita = findViewById(R.id.imgHabilita)
+        imgHabilita.setOnClickListener(this)
+
         homeFragment = ProfHomeFragment()
+        habilitaFragment = FragmentProfHabilita()
         accountFragment = ProfAccountFragment()
 
         val fragmentTransaction =
@@ -38,10 +51,11 @@ class TelaMainProfessor : AppCompatActivity(), View.OnClickListener {
         fragmentTransaction.commit()
 
         val data = intent.extras
-        val nome = data?.getString("nome")
-        val disciplina = data?.getString("disciplina")
-        val sob = data?.getString("sob")
-        val email = data?.getString("email")
+        nome = data?.getString("nome").toString()
+        disciplina = data?.getString("disciplina").toString()
+        sob = data?.getString("sob").toString()
+        email = data?.getString("email").toString()
+        inst = data?.getString("inst").toString()
 
 
     }
@@ -65,6 +79,15 @@ class TelaMainProfessor : AppCompatActivity(), View.OnClickListener {
                 replaceFragment(homeFragment)
                 imgHome.setImageDrawable(getDrawable(R.drawable.imghome))
                 imgAccount.setImageDrawable(getDrawable(R.drawable.imgaccountdes))
+            }
+            R.id.imgHabilita ->{
+                val intent = Intent(this, ProfHabilita::class.java)
+                intent.putExtra("inst", inst)
+                intent.putExtra("nome", nome);
+                intent.putExtra("disciplina", disciplina)
+                intent.putExtra("sob", sob)
+                intent.putExtra("email", email)
+                startActivity(intent)
             }
         }
     }

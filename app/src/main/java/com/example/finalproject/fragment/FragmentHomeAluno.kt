@@ -1,5 +1,6 @@
 package com.example.finalproject.fragment
 
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
@@ -55,24 +56,14 @@ class FragmentHomeAluno : Fragment() {
         val ra = data?.getString("ra")
         val email = data?.getString("email")
         val inst = data?.getString("inst")
-
-
-//        dataInitialize(inst.toString())
-
-//        val layoutManager = LinearLayoutManager(activity)
-//        recyclerViewDisciplinas = view.findViewById(R.id.recyclerViewDisciplinas)
-//        recyclerViewDisciplinas.layoutManager = layoutManager
-//        recyclerViewDisciplinas.setHasFixedSize(true)
-
-        val localFile = File.createTempFile("tempImage", "png")
-        storageRef.child("Adm/$inst/alunos/$ra/$ra.png").getFile(localFile)
-            .addOnSuccessListener {
-                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                Log.d("TAG", bitmap.toString())
-                imgAlunoMain.setImageBitmap(bitmap)
-            }.addOnFailureListener{
-                Log.e("TAG", it.message.toString())
-            }
+        try {
+            val bytes = data?.getByteArray("bitmap")
+            val bitmap:Bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes!!.size)
+            val imgAlunoMain:ImageView = view?.findViewById(R.id.imgAlunoMain)!!
+            imgAlunoMain.setImageBitmap(bitmap)
+        }catch (e:Exception){
+            Log.e("MYLOG", e.toString())
+        }
 
         val txtOlaAluno:TextView = view.findViewById(R.id.txtOlaAluno)
         txtOlaAluno.text = "Olá, $nome"

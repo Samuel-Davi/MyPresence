@@ -64,7 +64,6 @@ class TelaLoginAdm : AppCompatActivity() {
         }
     }
     private fun validaLogin(email:String, senha:String){
-
         var name = ""
         auth.signInWithEmailAndPassword(email, senha)
             .addOnCompleteListener (this){ task->

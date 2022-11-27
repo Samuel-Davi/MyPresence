@@ -1,6 +1,7 @@
 package com.example.finalproject.fragment
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
@@ -44,16 +45,15 @@ class FragmentAccountAluno : Fragment() {
         val sob = data?.getString("sob")
         val inst = data?.getString("inst")
 
-        val imgEditTelaOpc:ImageView = view?.findViewById(R.id.imgEditTelaOpc)!!
+        try {
+            val bytes = data?.getByteArray("bitmap")
+            val bitmap: Bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes!!.size)
+            val imgEditTelaOpc:ImageView = view?.findViewById(R.id.imgEditTelaOpc)!!
+            imgEditTelaOpc.setImageBitmap(bitmap)
+        }catch (e:Exception){
+            Log.e("MYLOG", e.toString())
+        }
 
-        val localFile = File.createTempFile("tempImage", "png")
-        storageRef.child("Adm/$inst/alunos/$ra/$ra.png").getFile(localFile)
-            .addOnSuccessListener {
-                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                imgEditTelaOpc.setImageBitmap(bitmap)
-            }.addOnFailureListener{
-                Log.e("TAG", it.message.toString())
-            }
 
         val txtSair:TextView = view?.findViewById(R.id.txtSairAluno)!!
 

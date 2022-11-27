@@ -19,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
-class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
+class TelaMainAluno : AppCompatActivity(){
 
     private lateinit var recyclerViewDisciplinas: RecyclerView
     private lateinit var newArrayListDisc:ArrayList<Disciplina>
@@ -42,6 +42,7 @@ class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
 
     private lateinit var homeFragment:FragmentHomeAluno
     private lateinit var accountFragment: FragmentAccountAluno
+    private lateinit var cameraFragment: FragmentCamera
 
     private lateinit var binding:ActivityTelaMainAlunoBinding
 
@@ -67,19 +68,18 @@ class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
         imgCamera = findViewById(R.id.imgIniciaRF)
 
         imgHome = findViewById(R.id.imgHomeAluno)
-        imgHome.setOnClickListener(this)
 
         imgAccount = findViewById(R.id.imgAccountAluno)
-        imgAccount.setOnClickListener(this)
 
 //        initNavigation()
 
         homeFragment = FragmentHomeAluno()
         accountFragment = FragmentAccountAluno()
+        cameraFragment = FragmentCamera()
 
         addFragment(homeFragment)
-
-
+//
+//
         with(binding){
             imgAccount.setOnClickListener {
                 replaceFragment(accountFragment)
@@ -87,14 +87,7 @@ class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
                 imgAccount.setImageDrawable(getDrawable(R.drawable.imguserbox))
             }
             imgCamera.setOnClickListener {
-                val intent = Intent(this@TelaMainAluno, OpenCVTeste::class.java)
-                intent.putExtra("nome", nome)
-                intent.putExtra("sob", sob)
-                intent.putExtra("turma", turma)
-                intent.putExtra("email", email)
-                intent.putExtra("ra", ra)
-                intent.putExtra("inst", inst)
-                startActivity(intent)
+                replaceFragment(cameraFragment)
             }
             imgHome.setOnClickListener {
                 replaceFragment(homeFragment)
@@ -103,7 +96,7 @@ class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
             }
         }
     }
-
+//
     private fun addFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction().add(R.id.fragmentsAluno, fragment)
         fragmentTransaction.commit()
@@ -114,10 +107,10 @@ class TelaMainAluno : AppCompatActivity() , View.OnClickListener{
         fragmentTransaction.replace(R.id.fragmentsAluno, fragment)
         fragmentTransaction.commit()
     }
-
-    override fun onClick(p0: View?) {
-        TODO("Not yet implemented")
-    }
+//
+//    override fun onClick(p0: View?) {
+//        TODO("Not yet implemented")
+//    }
 
 //    private fun initNavigation(){
 //        navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentsAluno) as NavHostFragment

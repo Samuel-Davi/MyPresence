@@ -1,8 +1,6 @@
 package com.example.finalproject.view
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -10,17 +8,13 @@ import android.view.View
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.databinding.ActivityTelaAdmProfBinding
-import com.example.finalproject.fragment.AdmAccountFragment
-import com.example.finalproject.fragment.AdmHomeFragment
-import com.example.finalproject.model.Prof
+import com.example.finalproject.fragment.FragmentAdmAccount
+import com.example.finalproject.fragment.FragmentAdmHome
 import com.example.finalproject.R
 import com.google.firebase.firestore.*
-import org.opencv.android.OpenCVLoader
 
 
 class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
@@ -28,8 +22,8 @@ class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
     private lateinit var imgHome: ImageView
     private lateinit var imgAccount: ImageView
 
-    private lateinit var homeFragment: AdmHomeFragment
-    private lateinit var accountFragment: AdmAccountFragment
+    private lateinit var homeFragment: FragmentAdmHome
+    private lateinit var accountFragment: FragmentAdmAccount
 
     private lateinit var db:FirebaseFirestore
 
@@ -55,8 +49,8 @@ class TelaAdmProf : AppCompatActivity(), View.OnClickListener {
         imgAccount = findViewById(R.id.imgAccount)
         imgAccount.setOnClickListener(this)
 
-        homeFragment = AdmHomeFragment()
-        accountFragment = AdmAccountFragment()
+        homeFragment = FragmentAdmHome()
+        accountFragment = FragmentAdmAccount()
 
         val data = intent.extras
         val nome = data?.getString("nome")

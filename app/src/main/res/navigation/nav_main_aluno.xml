@@ -15,4 +15,9 @@
         android:name="com.example.finalproject.fragment.FragmentAccountAluno"
         android:label="fragment_account_aluno"
         tools:layout="@layout/fragment_account_aluno" />
+    <fragment
+        android:id="@+id/action_camera"
+        android:name="com.example.finalproject.fragment.FragmentCamera"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" />
 </navigation>

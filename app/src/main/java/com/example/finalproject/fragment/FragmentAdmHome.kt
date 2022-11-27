@@ -20,7 +20,7 @@ import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
 
-class AdmHomeFragment : Fragment() {
+class FragmentAdmHome : Fragment() {
 
 //    private lateinit var buttonProfs:TextView
 //    private lateinit var buttonTurmas:TextView

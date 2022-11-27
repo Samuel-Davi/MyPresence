@@ -81,7 +81,7 @@ class TelaEditFotoAluno : AppCompatActivity() {
 
     private fun selectImage(){
         if (ContextCompat.checkSelfPermission(this,android.Manifest.permission.READ_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED) { // izin alınmadıysa
+            != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
                 1)
         } else {
@@ -115,7 +115,7 @@ class TelaEditFotoAluno : AppCompatActivity() {
                     imgEditFotoAluno.setImageBitmap(bitmap)
                     progressDialog = ProgressDialog(this)
                     progressDialog.setMessage("Imagem carregando...")
-                    val uploadTask = mStorageRef.child("Adm/$inst/alunos/$ra/$ra.png").putFile(imageUri)
+                    val uploadTask = mStorageRef.child("Adm/$inst/alunos/$ra/1.png").putFile(imageUri)
                     uploadTask.addOnSuccessListener {
                         Toast.makeText(this@TelaEditFotoAluno, "Imagem atualizada", Toast.LENGTH_LONG).show()
                         if (progressDialog.isShowing) progressDialog.dismiss()

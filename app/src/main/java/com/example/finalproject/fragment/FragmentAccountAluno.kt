@@ -10,10 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.finalproject.R
 import com.example.finalproject.view.TelaEditFotoAluno
 import com.example.finalproject.view.TelaEscolha
+import com.example.finalproject.view.TelaFaltas
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_account_aluno.*
@@ -44,6 +46,7 @@ class FragmentAccountAluno : Fragment() {
         val nome = data?.getString("nome")
         val sob = data?.getString("sob")
         val inst = data?.getString("inst")
+        val bytes = data?.getByteArray("bitmap")
 
         try {
             val bytes = data?.getByteArray("bitmap")
@@ -71,6 +74,20 @@ class FragmentAccountAluno : Fragment() {
             intent.putExtra("sob", sob)
             intent.putExtra("ra", ra)
             intent.putExtra("inst", inst)
+
+            startActivity(intent)
+        }
+
+        val linearViewFaltas:LinearLayout = view?.findViewById(R.id.linearViewFaltas)!!
+        linearViewFaltas.setOnClickListener {
+            var intent = Intent(activity, TelaFaltas::class.java)
+            intent.putExtra("nome", nome);
+            intent.putExtra("turma", turma)
+            intent.putExtra("sob", sob)
+            intent.putExtra("email", email)
+            intent.putExtra("ra", ra)
+            intent.putExtra("inst", inst)
+            intent.putExtra("bitmap", bytes)
             startActivity(intent)
         }
 

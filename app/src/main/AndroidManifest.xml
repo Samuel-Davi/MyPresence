@@ -23,6 +23,9 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.TelaFaltas"
+            android:exported="false" />
+        <activity
             android:name=".view.ProfHabilita"
             android:exported="false" />
         <activity

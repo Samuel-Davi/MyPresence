@@ -114,6 +114,22 @@ class FragmentCamera : Fragment(){
                     if(snapshot.getBoolean("confirmaRN")!!){
                         constraintTrue.isVisible = true
                     }else{
+                        docRef.get().addOnSuccessListener {
+                            var nFaltas = it.getLong("totalFaltas")
+                            nFaltas = nFaltas?.plus(1)
+                            val faltas = hashMapOf(
+                                "email" to email,
+                                "totalFaltas" to nFaltas,
+                                "nome" to nome,
+                                "ra" to ra,
+                                "confirmaRN" to false,
+                                "ativado" to false,
+                                "entrouSite" to false,
+                                "sobrenome" to sob,
+                                "turma" to turma
+                            )
+                            docRef.set(faltas)
+                        }
                         constraintFalse.isVisible = true
                     }
                     if(progressDialog.isShowing) progressDialog.dismiss()

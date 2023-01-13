@@ -13,6 +13,7 @@ import com.example.finalproject.R
 import com.example.finalproject.model.BotaoConfirmado
 import com.example.finalproject.databinding.ActivityTelaEscolhaBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import java.io.IOException
 
 class TelaEscolha : AppCompatActivity() {
 
@@ -25,6 +26,8 @@ class TelaEscolha : AppCompatActivity() {
         val binding = ActivityTelaEscolhaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         var btConfirm = BotaoConfirmado(false, false, false, 0)
+
+        Log.d("MYLOG", "ta aq")
 
         binding.imgAdm.setOnClickListener {
             Log.d("TAG", btConfirm.valorConfirm.toString())
@@ -77,16 +80,18 @@ class TelaEscolha : AppCompatActivity() {
 
         binding.btProx.setOnClickListener {
             if(btConfirm.valorConfirm == 1){
-                progressDialog = ProgressDialog(this)
-                progressDialog.setMessage("Carregando as instituições...")
-                progressDialog.setCancelable(false)
-                progressDialog.show()
+//                progressDialog = ProgressDialog(this)
+                Toast.makeText(this, "ta aq", Toast.LENGTH_LONG).show()
+//                progressDialog.setMessage("Carregando as instituições...")
+//                progressDialog.setCancelable(false)
+//                progressDialog.show()
                 getInstituicoesAluno()
             }else if(btConfirm.valorConfirm == 2) {
-                progressDialog = ProgressDialog(this)
-                progressDialog.setMessage("Carregando as instituições...")
-                progressDialog.setCancelable(false)
-                progressDialog.show()
+                Toast.makeText(this, "ta aq", Toast.LENGTH_LONG).show()
+//                progressDialog = ProgressDialog(this)
+//                progressDialog.setMessage("Carregando as instituições...")
+//                progressDialog.setCancelable(false)
+//                progressDialog.show()
                 getInstituicoesProf()
             }else if(btConfirm.valorConfirm == 3){
                 startActivity(Intent(this, TelaLoginAdm::class.java))
@@ -97,8 +102,10 @@ class TelaEscolha : AppCompatActivity() {
     }
 
     private fun getInstituicoesProf() {
+        Toast.makeText(this, "Prof", Toast.LENGTH_LONG).show()
         db = FirebaseFirestore.getInstance()
-        db.collection("Adm").get()
+        try{
+            db.collection("Adm").get()
             .addOnSuccessListener { documents->
                 instituicoes = ArrayList()
                 for (document in documents){
@@ -110,10 +117,16 @@ class TelaEscolha : AppCompatActivity() {
                     intent.putExtra("inst", instituicoes)
                     startActivity(intent)
                 }
+            }.addOnFailureListener {
+                Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
             }
+        }catch (e:IOException){
+            Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun getInstituicoesAluno() {
+        Toast.makeText(this, "Aluno", Toast.LENGTH_LONG).show()
         db = FirebaseFirestore.getInstance()
         db.collection("Adm").get()
             .addOnSuccessListener { documents->

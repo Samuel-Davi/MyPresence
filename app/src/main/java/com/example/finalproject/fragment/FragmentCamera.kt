@@ -92,7 +92,7 @@ class FragmentCamera : Fragment(){
 
         db = FirebaseFirestore.getInstance()
 
-        val webIntent: Intent = Uri.parse("http://192.168.43.129:5500").let { webpage ->
+        val webIntent: Intent = Uri.parse("http://192.168.0.17:5500").let { webpage ->
             Intent(Intent.ACTION_VIEW, webpage)
         }
 
